@@ -37,6 +37,7 @@ import { GATEWAYS, getGateway, getLanePartners, formatGatewayTime } from '../dat
 import { useNow } from '../utils/useNow';
 import { useCompanyContact } from '../utils/useCompanyContact';
 import { COMPANY, COMPANY_SHORT } from '../config/brand';
+import { TRACKING_ID_EXAMPLE } from '../shared/trackingId';
 import { api } from '../services/api';
 import './HomePage.css';
 
@@ -172,7 +173,7 @@ const MODES: { label: string; icon: React.ReactNode }[] = [
 const FAQS = [
   {
     q: 'Do I need an account to track a shipment?',
-    a: 'No. Enter your 8-character tracking ID (for example NGF7K2M9) on the Track page and you’ll see its status and milestones straight away. Personal details are masked for privacy.'
+    a: `No. Enter your 8-character tracking ID (for example ${TRACKING_ID_EXAMPLE}) on the Track page and you’ll see its status and milestones straight away. Personal details are masked for privacy.`
   },
   {
     q: 'How does live tracking work?',
@@ -180,7 +181,7 @@ const FAQS = [
   },
   {
     q: 'Can I track a multi-piece shipment under one ID?',
-    a: 'Yes. All pieces share one tracking ID, and each piece has its own label (for example NGF7K2M9-01, -02), so you can see every carton individually.'
+    a: `Yes. All pieces share one tracking ID, and each piece has its own label (for example ${TRACKING_ID_EXAMPLE}-01, -02), so you can see every carton individually.`
   },
   {
     q: 'Do you handle customs clearance?',
@@ -218,7 +219,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
   const activeGatewayTime = formatGatewayTime(activeGateway.timeZone, now);
   const activeGatewayLanes = getLanePartners(activeGateway.code).map((code) => getGateway(code)?.city ?? code);
 
-  // Stored as a message in the admin inbox; the server issues the NGF-TKT reference.
+  // Stored as a message in the admin inbox; the server issues the TGF-TKT reference.
   const handleCallbackSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!cbName.trim() || !cbPhone.trim() || cbSubmitting) return;
@@ -821,11 +822,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
 
               <div className="bc-canvas-wrap-thermal">
                 <div className="laser-sweep-line" />
-                <Barcode value="NGF7K2M9" width={2.2} height={68} />
+                <Barcode value={TRACKING_ID_EXAMPLE} width={2.2} height={68} />
               </div>
 
               <div className="thermal-footer font-mono">
-                <span>TRACKING ID: NGF7K2M9</span>
+                <span>TRACKING ID: {TRACKING_ID_EXAMPLE}</span>
                 <span>PIECE 01/01</span>
               </div>
             </div>

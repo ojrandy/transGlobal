@@ -68,7 +68,7 @@ export interface PackagePiece {
   id: string;
   pieceNumber: number;
   totalPieces: number;
-  trackingNumber: string; // e.g. "NGF7K2M9-01"
+  trackingNumber: string; // e.g. "TGF7K2M9-01"
   status: ShipmentStatus;
   statusText: string;
   currentLocation: string;

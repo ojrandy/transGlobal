@@ -2,7 +2,8 @@ import { Router, Request, Response } from 'express';
 import { db } from '../db.js';
 import { syncTimeBasedProgress, shipmentTransportMode } from '../progress.js';
 import { eventTimeDisplay } from '../../src/shared/timeZones.js';
-import { parseTrackingInput } from '../../src/shared/trackingId.js';
+import { parseTrackingInput, TRACKING_ID_EXAMPLE } from '../../src/shared/trackingId.js';
+import { TRACKING_PREFIX } from '../../src/config/brand.js';
 import { publicShipmentImages } from './shipmentImages.js';
 import { getShipmentPayment } from './shipmentPayments.js';
 import { latestPublicProof } from './paymentProofs.js';
@@ -55,11 +56,11 @@ function maskEmail(email: string): string | undefined {
 // GET /api/track/:trackingNumber (Public tracking with PII protection)
 trackRouter.get('/:trackingNumber', (req: Request, res: Response) => {
   try {
-    // Normalise first ("ngf 7k2-m9" -> NGF7K2M9; a child label such as NGF7K2M9-01 resolves to
+    // Normalise first ("tgf 7k2-m9" -> TGF7K2M9; a child label such as TGF7K2M9-01 resolves to
     // its parent), and reject anything that can't be a tracking ID before touching the DB.
     const parsed = parseTrackingInput(req.params.trackingNumber as string);
     if (!parsed) {
-      return res.status(400).json({ success: false, error: 'Tracking IDs are 8 characters, starting with NGF (for example NGF7K2M9).' });
+      return res.status(400).json({ success: false, error: `Tracking IDs are 8 characters, starting with ${TRACKING_PREFIX} (for example ${TRACKING_ID_EXAMPLE}).` });
     }
     const tracking = parsed.trackingId;
     const row = db.prepare('SELECT * FROM shipments WHERE tracking_number = ? AND deleted_at_ts IS NULL').get(tracking) as any;

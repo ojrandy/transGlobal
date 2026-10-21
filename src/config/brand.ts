@@ -4,13 +4,13 @@
 // Contact values left as '' are not known yet. UI that would show them must hide itself
 // (see useCompanyContact). Never fill these with made-up numbers or addresses.
 
-export const COMPANY = 'Navora Global Freight';
-export const COMPANY_SHORT = 'Navora';
-export const LEGAL_NAME = 'Navora Global Freight';
+export const COMPANY = 'Trans Global Freight Logistics';
+export const COMPANY_SHORT = 'Trans Global';
+export const LEGAL_NAME = 'Trans Global Freight Logistics';
 export const TAGLINE = 'Connecting Markets, Delivering Trust';
 
-export const EMAIL = 'info@navoraglobalfreight.com';
-export const DOMAIN = 'navoraglobalfreight.com';
+export const EMAIL = 'info@transglobalfreightlogistics.ltd';
+export const DOMAIN = 'transglobalfreightlogistics.ltd';
 export const SITE_URL = `https://${DOMAIN}`;
 
 // Logo files in Public/brand (BRAND_GUIDE §6). Full colour on light surfaces, white on Ink.
@@ -40,10 +40,10 @@ export const OPERATIONS_CENTRE = `${COMPANY_SHORT} Operations Centre`;
 export const INTAKE_DESK = `${COMPANY_SHORT} Intake Desk`;
 
 // Tracking ID = prefix + 5 characters, 8 total (BRAND_GUIDE §7).
-export const TRACKING_PREFIX = 'NGF';
+export const TRACKING_PREFIX = 'TGF';
 
-// Non-tracking references (tickets, invoices, seals) start with this, e.g. NGF-TKT-123456.
-export const REFERENCE_PREFIX = 'NGF';
+// Non-tracking references (tickets, invoices, seals) start with this, e.g. TGF-TKT-123456.
+export const REFERENCE_PREFIX = 'TGF';
 
 // TBD: supplied by the owner.
 export const PHONE = '';

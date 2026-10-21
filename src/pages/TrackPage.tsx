@@ -16,9 +16,9 @@ import { ResponsiveImage } from '../components/ResponsiveImage';
 import { Shipment } from '../types/shipment';
 import { api } from '../services/api';
 import { useCompanyContact } from '../utils/useCompanyContact';
-import { COMPANY_SHORT } from '../config/brand';
+import { COMPANY_SHORT, TRACKING_PREFIX } from '../config/brand';
 import { useEscapeKey } from '../utils/useEscapeKey';
-import { parseTrackingInput } from '../shared/trackingId';
+import { parseTrackingInput, TRACKING_ID_EXAMPLE } from '../shared/trackingId';
 import { shipmentStatusLabel, shipmentStatusTone } from '../shared/shipmentStatus';
 import './TrackPage.css';
 
@@ -179,7 +179,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
               {/* Malformed input (neither a tracking ID nor a quote reference) gets format help;
                   a well-formed ID that isn't on file gets "not found" (same split as /api/track 400/404). */}
               {!parseTrackingInput(notFoundQuery) && !notFoundQuery.trim().toUpperCase().startsWith('QR') ? (
-                <p>Tracking IDs start with NGF and are 8 characters long, e.g. <span className="font-mono">NGF7K2M9</span>.</p>
+                <p>Tracking IDs start with {TRACKING_PREFIX} and are 8 characters long, e.g. <span className="font-mono">{TRACKING_ID_EXAMPLE}</span>.</p>
               ) : (
                 <p>
                   We couldn't find a shipment with ID <span className="font-mono font-bold">{notFoundQuery.trim().toUpperCase()}</span>. Check the characters and try again, or{' '}
@@ -222,7 +222,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
                   <Search size={22} className="terminal-search-icon" />
                   <input
                     type="text"
-                    placeholder="e.g. NGF7K2M9"
+                    placeholder={`e.g. ${TRACKING_ID_EXAMPLE}`}
                     aria-label="Tracking ID"
                     value={trackingNumber}
                     onChange={(e) => setTrackingNumber(e.target.value)}
@@ -260,7 +260,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
                   value={multiInput}
                   onChange={(e) => setMultiInput(e.target.value)}
                   className="terminal-textarea font-mono"
-                  placeholder="NGF7K2M9&#10;NGF8M4PQ&#10;NGF3J7NK"
+                  placeholder={[TRACKING_ID_EXAMPLE, `${TRACKING_PREFIX}8M4PQ`, `${TRACKING_PREFIX}3J7NK`].join('\n')}
                 />
                 <div className="batch-actions-row">
                   <button type="submit" className="btn-corp-primary terminal-submit-btn">
@@ -441,7 +441,7 @@ export const TrackPage: React.FC<TrackPageProps> = ({ onTrack, onNavigate, notFo
                         <p className="batch-not-found-text">
                           {parseTrackingInput(query)
                             ? `We couldn't find a shipment with ID ${query}. Check the characters and try again.`
-                            : 'Tracking IDs start with NGF and are 8 characters long, e.g. NGF7K2M9.'}
+                            : `Tracking IDs start with ${TRACKING_PREFIX} and are 8 characters long, e.g. ${TRACKING_ID_EXAMPLE}.`}
                         </p>
                       </div>
                     );

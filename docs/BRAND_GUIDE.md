@@ -1,6 +1,6 @@
-# Navora Global Freight — Brand Guide
+# Trans Global Freight Logistics — Brand Guide
 
-> **Context:** The Navora platform is **already built and working**: public website, tracking engine, Express/SQLite API,
+> **Context:** The Trans Global platform is **already built and working**: public website, tracking engine, Express/SQLite API,
 > admin console, documents and quotes. Claude is acting as a **senior professional developer** maintaining and improving
 > this existing codebase. Nothing here is built from scratch; every task modifies the working system in place and must
 > leave it working. See `CLAUDE.md §0`.
@@ -11,17 +11,17 @@
 
 | Context | Use |
 |---|---|
-| Legal line, invoices, terms, footer copyright | **Navora Global Freight** (`LEGAL_NAME`) |
-| First mention on a page, titles, meta | **Navora Global Freight** (`COMPANY`) |
-| Repeated mentions, buttons, UI labels | **Navora** (`COMPANY_SHORT`) |
+| Legal line, invoices, terms, footer copyright | **Trans Global Freight Logistics** (`LEGAL_NAME`) |
+| First mention on a page, titles, meta | **Trans Global Freight Logistics** (`COMPANY`) |
+| Repeated mentions, buttons, UI labels | **Trans Global** (`COMPANY_SHORT`) |
 
-All three come from `src/config/brand.ts`; never hard-code them. `NGF` is an ID prefix only, not a name for copy.
+All three come from `src/config/brand.ts`; never hard-code them. `TGF` is an ID prefix only, not a name for copy.
 
-Copyright line: `© {currentYear} Navora Global Freight. All rights reserved.` (year computed, not hard-coded).
+Copyright line: `© {currentYear} Trans Global Freight Logistics. All rights reserved.` (year computed, not hard-coded).
 
 ## 2. Positioning
 
-**One line:** Navora Global Freight moves time-critical and high-value cargo across borders, with one tracking number
+**One line:** Trans Global Freight Logistics moves time-critical and high-value cargo across borders, with one tracking number
 and one accountable team from pickup to proof of delivery.
 
 **Tagline:** *Connecting Markets, Delivering Trust* (as printed on the logo; `TAGLINE` in `brand.ts`).
@@ -116,31 +116,31 @@ Keep the current, well-performing trio (already loaded in `index.html`):
 
 ## 7. Tracking ID and other identifiers
 
-**Tracking ID (8 characters exactly):** `NGF` + 5 characters from the safe alphabet (`TRACKING_PREFIX` in `brand.ts`).
+**Tracking ID (8 characters exactly):** `TGF` + 5 characters from the safe alphabet (`TRACKING_PREFIX` in `brand.ts`).
 
 ```
-Format:    NGF + [5 chars]           e.g. NGF7K2M9, NGFQ4X8T
+Format:    TGF + [5 chars]           e.g. TGF7K2M9, TGFQ4X8T
 Alphabet:  23456789ABCDEFGHJKLMNPQRSTUVWXYZ   (no 0/O, 1/I, to avoid misreading)
 Capacity:  32^5 = 33,554,432 unique IDs
-Regex:     ^NGF[2-9A-HJ-NP-Z]{5}$
-Input:     trim, uppercase, strip spaces and dashes before validating ("ngf 7k2-m9" → NGF7K2M9)
+Regex:     ^TGF[2-9A-HJ-NP-Z]{5}$
+Input:     trim, uppercase, strip spaces and dashes before validating ("tgf 7k2-m9" → TGF7K2M9)
 ```
 
 - One shared module, `src/shared/trackingId.ts`, used by the server and the client. **The server is the authority:**
   `server/trackingIds.ts` generates with `crypto.randomInt`, checks uniqueness against the DB and retries on collision.
-- **Multi-piece child labels:** base ID + piece suffix, e.g. `NGF7K2M9-01`, `NGF7K2M9-02`. The tracking ID
+- **Multi-piece child labels:** base ID + piece suffix, e.g. `TGF7K2M9-01`, `TGF7K2M9-02`. The tracking ID
   itself stays 8 characters, and a search for a child label resolves to the parent.
-- **Returns:** a return gets its own new NGF ID and is linked to the original (no `RTO-` prefix).
+- **Returns:** a return gets its own new TGF ID and is linked to the original (no `RTO-` prefix).
 
 **Other references** (`src/shared/references.ts`, prefix `REFERENCE_PREFIX`; not tracking IDs, so not bound by the
 8-character rule):
 
 | Reference | Format | Example |
 |---|---|---|
-| Security seal | `NGF-SL-######` | NGF-SL-892401 |
-| Support / contact ticket | `NGF-TKT-######` | NGF-TKT-418230 |
-| Invoice | `NGF-INV-######` | NGF-INV-004091 |
-| Tracking ID not yet assigned | `NGF·····` placeholder | shown until the server returns the ID |
+| Security seal | `TGF-SL-######` | TGF-SL-892401 |
+| Support / contact ticket | `TGF-TKT-######` | TGF-TKT-418230 |
+| Invoice | `TGF-INV-######` | TGF-INV-004091 |
+| Tracking ID not yet assigned | `TGF·····` placeholder | shown until the server returns the ID |
 | Quote | `QR-2026-#####` | server-issued; format still open (tracker Blocked #35) |
 
 ## 8. Imagery

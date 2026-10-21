@@ -106,13 +106,13 @@ export function validateCryptoAddress(input: string, coin: CryptoCoin, network =
 /** $Cashtag: 1 to 20 letters/digits/underscores, with at least one letter. Stored with the $. */
 export function validateCashtag(input: string): ValidationResult {
   const tag = input.trim().replace(/^\$/, '');
-  return /^(?=.*[A-Za-z])[A-Za-z0-9_]{1,20}$/.test(tag) ? ok(`$${tag}`) : fail('Enter a $Cashtag, e.g. $NavoraPay.');
+  return /^(?=.*[A-Za-z])[A-Za-z0-9_]{1,20}$/.test(tag) ? ok(`$${tag}`) : fail('Enter a $Cashtag, e.g. $TransGlobalPay.');
 }
 
 /** @handle (Venmo username, Wisetag, Revtag): letters, digits, - and _, stored with the @. */
 export function validateHandle(input: string): ValidationResult {
   const handle = input.trim().replace(/^@/, '');
-  return /^[A-Za-z0-9][A-Za-z0-9_-]{1,29}$/.test(handle) ? ok(`@${handle}`) : fail('Enter a username, e.g. @navora-pay.');
+  return /^[A-Za-z0-9][A-Za-z0-9_-]{1,29}$/.test(handle) ? ok(`@${handle}`) : fail('Enter a username, e.g. @transglobal-pay.');
 }
 
 /** Account numbers: digits only, within the given length range. */

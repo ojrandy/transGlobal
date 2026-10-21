@@ -1,6 +1,9 @@
 // Help Centre knowledge base (docs/CONTENT.md §8.2). Used by the Help page and by the
 // "Quick answers" block on the Contact page (§8.3).
 
+import { TRACKING_PREFIX } from '../config/brand';
+import { TRACKING_ID_EXAMPLE } from '../shared/trackingId';
+
 export type HelpCategory = 'tracking' | 'booking' | 'customs' | 'documents';
 
 export interface HelpArticle {
@@ -23,7 +26,7 @@ export const HELP_ARTICLES: HelpArticle[] = [
     id: 'find-id',
     category: 'tracking',
     question: 'Where do I find my tracking ID?',
-    answer: "On your booking confirmation, at the top of your waybill and on every piece label. It's 8 characters and starts with NGF (e.g. NGF7K2M9).",
+    answer: `On your booking confirmation, at the top of your waybill and on every piece label. It's 8 characters and starts with ${TRACKING_PREFIX} (e.g. ${TRACKING_ID_EXAMPLE}).`,
   },
   {
     id: 'not-updated',

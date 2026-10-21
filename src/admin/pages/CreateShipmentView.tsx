@@ -348,7 +348,7 @@ export const CreateShipmentView: React.FC<CreateShipmentViewProps> = ({
   // STEP 7 / Creation State
   // ----------------------------------------------------
   // Set from the server's response on create: the server assigns every tracking ID
-  // (BRAND_GUIDE §7). Until then the UI shows the NGF····· placeholder.
+  // (BRAND_GUIDE §7). Until then the UI shows the TGF····· placeholder.
   const [generatedTrackingNumber, setGeneratedTrackingNumber] = useState<string>('');
   const [createdShipmentRecord, setCreatedShipmentRecord] = useState<Shipment | null>(null);
   const [isCopied, setIsCopied] = useState(false);
@@ -785,7 +785,7 @@ export const CreateShipmentView: React.FC<CreateShipmentViewProps> = ({
       }
     }
     setIsCreatingShipment(true);
-    // Piece labels (NGFxxxxx-NN) are stamped from the server-assigned ID in createShipment.
+    // Piece labels (TGFxxxxx-NN) are stamped from the server-assigned ID in createShipment.
     const formattedPieces = shipmentType === 'Vehicle'
       ? [
           {

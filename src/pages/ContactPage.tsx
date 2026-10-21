@@ -17,6 +17,7 @@ import {
 import { useAdminData } from '../context/AdminDataContext';
 import { useCompanyContact } from '../utils/useCompanyContact';
 import { COMPANY_SHORT, LEGAL_NAME } from '../config/brand';
+import { TRACKING_ID_EXAMPLE } from '../shared/trackingId';
 import { api } from '../services/api';
 import { GATEWAYS, getGateway } from '../data/gateways';
 import { HELP_ARTICLES, CONTACT_QUICK_ANSWER_IDS } from '../data/helpArticles';
@@ -48,7 +49,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, initialGat
   const [tracking, setTracking] = useState('');
   const [gatewayCode, setGatewayCode] = useState(getGateway(initialGateway) ? initialGateway : '');
   const [message, setMessage] = useState('');
-  // The server's reference (NGF-TKT-######) and the email it was sent with.
+  // The server's reference (TGF-TKT-######) and the email it was sent with.
   const [ticket, setTicket] = useState<{ id: string; email: string } | null>(null);
   const [formError, setFormError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -66,7 +67,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, initialGat
       return;
     }
 
-    // The server stores the message and issues the NGF-TKT reference.
+    // The server stores the message and issues the TGF-TKT reference.
     setSubmitting(true);
     try {
       const saved = await api.submitContactMessage({
@@ -251,7 +252,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, initialGat
                       type="text"
                       value={tracking}
                       onChange={(e) => setTracking(e.target.value)}
-                      placeholder="e.g. NGF7K2M9"
+                      placeholder={`e.g. ${TRACKING_ID_EXAMPLE}`}
                       className="ngf-input font-mono"
                     />
                   </div>

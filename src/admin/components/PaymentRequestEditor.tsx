@@ -11,6 +11,7 @@ import {
 import type { PaymentRequestBody } from '../../services/api';
 import { PaymentIcon } from '../../components/PaymentIcon';
 import { PaymentMethodCard } from '../../components/PaymentMethodCard';
+import { REFERENCE_PREFIXES } from '../../shared/references';
 import './PaymentRequestEditor.css';
 
 // ---------------------------------------------------------------------------------------------
@@ -282,7 +283,7 @@ export const PaymentRequestEditor: React.FC<PaymentRequestEditorProps> = ({ valu
               maxLength={PAYMENT_LIMITS.reasonMax}
               value={value.chargeReason}
               onChange={(e) => set({ chargeReason: e.target.value })}
-              placeholder="e.g. Customs duty – Invoice NGF-INV-104233"
+              placeholder={`e.g. Customs duty – Invoice ${REFERENCE_PREFIXES.invoice}104233`}
               aria-invalid={!!errors.chargeReason}
             />
             {errors.chargeReason && <p className="ngf-pre-error">{errors.chargeReason}</p>}

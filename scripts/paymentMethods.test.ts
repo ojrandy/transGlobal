@@ -29,16 +29,16 @@ test('UK sort code and US routing number', () => {
 test('email, https link, phone, SWIFT, cashtag, handle', () => {
   assert.equal(validateEmail('pay@example.com').ok, true);
   assert.equal(validateEmail('pay@example').ok, false);
-  assert.equal(validateHttpsUrl('https://paypal.me/navora').ok, true);
-  assert.equal(validateHttpsUrl('http://paypal.me/navora').ok, false);
+  assert.equal(validateHttpsUrl('https://paypal.me/transglobal-pay').ok, true);
+  assert.equal(validateHttpsUrl('http://paypal.me/transglobal-pay').ok, false);
   assert.equal(validateHttpsUrl('javascript:alert(1)').ok, false);
   assert.equal(value(validatePhone('+1 (555) 010-0000')), '+15550100000');
   assert.equal(validatePhone('12345').ok, false);
   assert.equal(value(validateSwift('nwbk gb 2l')), 'NWBKGB2L');
   assert.equal(validateSwift('NWBKGB2LXX').ok, false);
-  assert.equal(value(validateCashtag('NavoraPay')), '$NavoraPay');
+  assert.equal(value(validateCashtag('TransGlobalPay')), '$TransGlobalPay');
   assert.equal(validateCashtag('$123').ok, false);
-  assert.equal(value(validateHandle('navora-pay')), '@navora-pay');
+  assert.equal(value(validateHandle('transglobal-pay')), '@transglobal-pay');
   assert.equal(validateHandle('@a b').ok, false);
 });
 
@@ -67,16 +67,16 @@ test('registry: 17 types, no gift cards, every type has fields and a label', () 
 });
 
 test('validatePaymentDetails: required, either/or, normalising, unknown keys dropped', () => {
-  const uk = validatePaymentDetails('uk_bank', { accountName: ' Navora  Ltd ', bankName: 'Example Bank', sortCode: '123456', accountNumber: '1234 5678', evil: '<script>' });
+  const uk = validatePaymentDetails('uk_bank', { accountName: ' Trans Global  Ltd ', bankName: 'Example Bank', sortCode: '123456', accountNumber: '1234 5678', evil: '<script>' });
   assert.ok(uk.ok);
-  if (uk.ok) assert.deepEqual(uk.details, { accountName: 'Navora Ltd', bankName: 'Example Bank', sortCode: '12-34-56', accountNumber: '12345678' });
+  if (uk.ok) assert.deepEqual(uk.details, { accountName: 'Trans Global Ltd', bankName: 'Example Bank', sortCode: '12-34-56', accountNumber: '12345678' });
 
   const missing = validatePaymentDetails('uk_bank', { accountName: 'X' });
   assert.ok(!missing.ok && missing.errors.sortCode && missing.errors.bankName);
 
-  const zelle = validatePaymentDetails('zelle', { accountName: 'Navora' });
+  const zelle = validatePaymentDetails('zelle', { accountName: 'Trans Global' });
   assert.ok(!zelle.ok && /email or Zelle phone/.test(zelle.errors._form));
-  assert.ok(validatePaymentDetails('zelle', { accountName: 'Navora', phone: '+1 555 010 0000' }).ok);
+  assert.ok(validatePaymentDetails('zelle', { accountName: 'Trans Global', phone: '+1 555 010 0000' }).ok);
 
   const paypalWrongHost = validatePaymentDetails('paypal', { link: 'https://evil.example/paypal.me' });
   assert.ok(!paypalWrongHost.ok && paypalWrongHost.errors.link);
@@ -87,13 +87,13 @@ test('validatePaymentDetails: required, either/or, normalising, unknown keys dro
   const badNet = validatePaymentDetails('usdt', { network: 'Dogecoin', address: 'x' });
   assert.ok(!badNet.ok && badNet.errors.network);
 
-  const wire = validatePaymentDetails('intl_wire', { beneficiary: 'Navora', bankName: 'B', swift: 'NWBKGB2L', country: 'United Kingdom', iban: 'GB82WEST12345698765433' });
+  const wire = validatePaymentDetails('intl_wire', { beneficiary: 'Trans Global', bankName: 'B', swift: 'NWBKGB2L', country: 'United Kingdom', iban: 'GB82WEST12345698765433' });
   assert.ok(!wire.ok && wire.errors.iban);
 });
 
 test('customerMethodView: link, QR, warning and note per type', () => {
-  const cash = customerMethodView('cashapp', { cashtag: '$NavoraPay', accountName: 'Navora' });
-  assert.deepEqual(cash.link, { label: 'Open Cash App', url: 'https://cash.app/$NavoraPay' });
+  const cash = customerMethodView('cashapp', { cashtag: '$TransGlobalPay', accountName: 'Trans Global' });
+  assert.deepEqual(cash.link, { label: 'Open Cash App', url: 'https://cash.app/$TransGlobalPay' });
   const usdt = customerMethodView('usdt', { network: 'TRC20 (Tron)', address: 'TJRabPrwbZy45sbavfcjinPJC18kjpRTv8' }, 'USDT (main wallet)');
   assert.equal(usdt.label, 'USDT (main wallet)');
   assert.equal(usdt.qr, 'TJRabPrwbZy45sbavfcjinPJC18kjpRTv8');

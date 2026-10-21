@@ -4,7 +4,8 @@ import { db } from '../db.js';
 import { paymentProofLimiter } from '../middleware/rateLimit.js';
 import { deleteUpload, saveImageUpload } from '../uploads.js';
 import { getShipmentPayment } from './shipmentPayments.js';
-import { parseTrackingInput } from '../../src/shared/trackingId.js';
+import { parseTrackingInput, TRACKING_ID_EXAMPLE } from '../../src/shared/trackingId.js';
+import { TRACKING_PREFIX } from '../../src/config/brand.js';
 import { PROOF_LIMITS, validateProofSubmission } from '../../src/shared/paymentProof.js';
 
 // POST /api/track/:trackingNumber/payment-proof (public, rate-limited; docs/update.md F.2).
@@ -22,7 +23,7 @@ trackProofRouter.post('/:trackingNumber/payment-proof', paymentProofLimiter, (re
   let savedFile: string | null = null;
   try {
     const parsed = parseTrackingInput(req.params.trackingNumber as string);
-    if (!parsed) return res.status(400).json({ success: false, error: 'Tracking IDs are 8 characters, starting with NGF (for example NGF7K2M9).' });
+    if (!parsed) return res.status(400).json({ success: false, error: `Tracking IDs are 8 characters, starting with ${TRACKING_PREFIX} (for example ${TRACKING_ID_EXAMPLE}).` });
     const tracking = parsed.trackingId;
 
     const shipment = db.prepare('SELECT 1 FROM shipments WHERE tracking_number = ? AND deleted_at_ts IS NULL').get(tracking);

@@ -109,12 +109,12 @@ export const PAYMENT_METHODS: Record<PaymentMethodType, PaymentMethodDefinition>
   },
   cashapp: {
     type: 'cashapp', label: 'Cash App', iconKey: 'cashapp', group: 'wallet',
-    fields: [{ name: 'cashtag', label: '$Cashtag', kind: 'cashtag', required: true, placeholder: '$NavoraPay' }, NAME('Name', false)],
+    fields: [{ name: 'cashtag', label: '$Cashtag', kind: 'cashtag', required: true, placeholder: '$TransGlobalPay' }, NAME('Name', false)],
     link: (d) => (d.cashtag ? { label: 'Open Cash App', url: `https://cash.app/${d.cashtag}` } : null),
   },
   venmo: {
     type: 'venmo', label: 'Venmo', iconKey: 'venmo', group: 'wallet',
-    fields: [{ name: 'username', label: 'Venmo username', kind: 'handle', required: true, placeholder: '@navora-pay' }, NAME('Name', false)],
+    fields: [{ name: 'username', label: 'Venmo username', kind: 'handle', required: true, placeholder: '@transglobal-pay' }, NAME('Name', false)],
     link: (d) => (d.username ? { label: 'Open Venmo', url: `https://venmo.com/u/${d.username.replace(/^@/, '')}` } : null),
   },
   applepay: {
@@ -162,12 +162,12 @@ export const PAYMENT_METHODS: Record<PaymentMethodType, PaymentMethodDefinition>
   },
   wise: {
     type: 'wise', label: 'Wise', iconKey: 'wise', group: 'wallet',
-    fields: [{ name: 'email', label: 'Wise email', kind: 'email' }, { name: 'wisetag', label: 'Wisetag', kind: 'handle', placeholder: '@navora' }, NAME('Name')],
+    fields: [{ name: 'email', label: 'Wise email', kind: 'email' }, { name: 'wisetag', label: 'Wisetag', kind: 'handle', placeholder: '@transglobal-pay' }, NAME('Name')],
     requireOneOf: [['email', 'wisetag']],
   },
   revolut: {
     type: 'revolut', label: 'Revolut', iconKey: 'revolut', group: 'wallet',
-    fields: [{ name: 'revtag', label: 'Revtag', kind: 'handle', placeholder: '@navora' }, { name: 'phone', label: 'Phone', kind: 'phone' }, NAME('Name')],
+    fields: [{ name: 'revtag', label: 'Revtag', kind: 'handle', placeholder: '@transglobal-pay' }, { name: 'phone', label: 'Phone', kind: 'phone' }, NAME('Name')],
     requireOneOf: [['revtag', 'phone']],
   },
   card_link: {
