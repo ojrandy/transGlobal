@@ -2,7 +2,7 @@
 // public site and the admin host share the same index.html, and the chat must never appear in the
 // operations console. The snippet is Smartsupp's own loader, unchanged apart from typing.
 
-const SMARTSUPP_KEY = '285d9b75390c3ee4e92d2e4f3cfc22751891a416';
+const SMARTSUPP_KEY = '96f74d2c2c9a5ab3a1dca7292ffa38f8ae77ba76';
 const SMARTSUPP_LOADER = 'https://www.smartsuppchat.com/loader.js?';
 
 type SmartsuppFn = ((...args: unknown[]) => void) & { _: unknown[][] };
