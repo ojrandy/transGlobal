@@ -23,7 +23,7 @@ import { authRouter } from './routes/auth.js';
 import { messagesRouter } from './routes/messages.js';
 import { mediaRouter } from './routes/media.js';
 import { seoRouter } from './seo.js';
-import { ADMIN_PATH, COMPANY, isAdminPath } from '../src/config/brand.js';
+import { ADMIN_PATH, COMPANY, DOMAIN, SITE_URL, isAdminPath } from '../src/config/brand.js';
 import { requireAdminAuth, SESSION_COOKIE } from './middleware/auth.js';
 
 dotenv.config(); // reload trigger for tsx watch after .env changes
@@ -44,6 +44,16 @@ const ADMIN_PROXY_TARGET = process.env.ADMIN_PROXY_TARGET;
 // unauthenticated (401), even though login itself appears to succeed. Trusting the first
 // proxy hop is what lets Express read the standard X-Forwarded-Proto header instead.
 app.set('trust proxy', 1);
+
+// One canonical host: www.<DOMAIN> answers with a 301 to the bare domain, path and query kept.
+// The admin session cookie is host-only, so a login on www would not carry over to the bare domain.
+app.use((req: Request, res: Response, next: NextFunction) => {
+  if (req.hostname === `www.${DOMAIN}`) {
+    res.redirect(301, SITE_URL + req.originalUrl);
+    return;
+  }
+  next();
+});
 
 if (!ADMIN_PROXY_TARGET) {
   // Initialize Persistent SQLite Database
