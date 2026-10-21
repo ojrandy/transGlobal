@@ -26,16 +26,16 @@ on **transglobalfreightlogistics.ltd**. This is a **words-and-logo rebrand only*
 | Key | Value |
 |---|---|
 | Name | **Trans Global Freight Logistics** |
-| Short name (UI) | **Trans Global** ⚠️ *confirm in Prompt 1* |
-| Legal name | **Trans Global Freight Logistics** ⚠️ *confirm: add "Ltd" only if the company is registered as such* |
+| Short name (UI) | **Trans Global** ✅ confirmed by owner (2026-10-21) |
+| Legal name | **Trans Global Freight Logistics** (no "Ltd") ✅ confirmed by owner (2026-10-21) |
 | Tagline | **Connecting Markets, Delivering Trust** (unchanged) |
 | Domain | **transglobalfreightlogistics.ltd** (`www.` redirects to it) |
-| Email | **info@transglobalfreightlogistics.ltd** ⚠️ *confirm the mailbox exists* |
+| Email | **info@transglobalfreightlogistics.ltd** ✅ confirmed by owner (2026-10-21) |
 | Admin console | **https://transglobalfreightlogistics.ltd/private-site/** (same app, same domain) · `http://localhost:3000/#/admin` and `http://localhost:3000/private-site/` locally |
-| Tracking ID | **`TGF` + 5 characters = 8 total**, e.g. `TGF7K2M9` ⚠️ *confirm the prefix* |
+| Tracking ID | **`TGF` + 5 characters = 8 total**, e.g. `TGF7K2M9` ✅ confirmed by owner (2026-10-21) |
 | Reference prefixes | `TGF-TKT-######`, `TGF-INV-######`, `TGF-SL-######` |
 | Internal code prefix | `tgf` (CSS `--tgf-*`, classes `tgf-*`, storage keys `tgf_*`, cookie `tgf.sid`, DB file `transglobal.db`) |
-| Example cashtag (payment form placeholder) | `$TransGlobalPay` |
+| Payment form placeholders | Cashtag `$TransGlobalPay` (hyphens are not allowed in a cashtag); every handle (Venmo, Revtag, Wisetag) and example link becomes `transglobal-pay`, e.g. `@transglobal-pay`, `paypal.me/transglobal-pay` |
 | Logo source | `Public/images/Global Freight Ship and Globe Logo.png` (1774×887, RGBA) → moved to `images/brand-source/transglobal-logo.png` |
 | Palette, fonts, photos | **Unchanged.** If the new logo's colours clash with the red `#D3070B`/ink palette, STOP and ask; don't recolour the site on your own |
 | Phone / WhatsApp / address / socials | **Not supplied yet. Leave the brand.ts values empty and hidden.** Never invent them. Add them later with Prompt O |
