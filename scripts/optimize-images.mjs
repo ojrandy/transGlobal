@@ -5,7 +5,7 @@
 //           node scripts/optimize-images.mjs --brand    (logos, mark, icons and OG image only)
 //           node scripts/optimize-images.mjs --icons    (favicon and app icons only)
 //           node scripts/optimize-images.mjs --recompress  (photos only; see RECOMPRESS below)
-// Outputs: Public/brand/* (logo, logo-white, mark, icons, OG image) and Public/images/site/* (AVIF + WebP + JPG
+// Outputs: Public/brand/* (logo, logo-white, their web WebPs, mark, icons, OG image) and Public/images/site/* (AVIF + WebP + JPG
 // per width),
 // plus src/data/siteImages.ts (the manifest <ResponsiveImage> reads).
 import sharp from 'sharp';
@@ -42,53 +42,49 @@ fs.mkdirSync(BRAND_OUT, { recursive: true });
 fs.mkdirSync(PHOTO_OUT, { recursive: true });
 
 // ---------------------------------------------------------------------------------------------
-// Logo: the supplied logo (images/Nov-logo.png) is an opaque PNG on a light grey paper texture
-// (whiteness ~230-255) with a white glow around the letters. "Colour to alpha" against white
-// turns the paper and glow fully transparent and keeps anti-aliased edges smooth, without a
-// grey fringe. Stray darker specks in the texture are cleared afterwards by dropSpecks().
+// Logo: the supplied logo (images/brand-source/transglobal-logo.png, 1774x887) is already a
+// transparent PNG, but it carries a faint red haze (alpha below ~16) across the canvas and inside
+// the globe, plus loose noise specks. cleanAlpha() fades the haze out and dropBlobs() clears the
+// specks, so nothing glows or speckles on a dark background. Edges are left as supplied.
 // ---------------------------------------------------------------------------------------------
-const LOGO_SRC = 'Nov-logo.png';
+const LOGO_SRC = 'brand-source/transglobal-logo.png';
 
-// low:  at or below this "whiteness" (min of R, G, B) a pixel is fully opaque.
-// high: at or above it the pixel is background; set just under the paper texture's darkest tone.
-async function whiteToAlpha(input, { low = 60, high = 232 } = {}) {
-  const { data, info } = await sharp(input).removeAlpha().raw().toBuffer({ resolveWithObject: true });
-  const out = Buffer.alloc(info.width * info.height * 4);
-  for (let i = 0, j = 0; i < data.length; i += 3, j += 4) {
-    const r = data[i], g = data[i + 1], b = data[i + 2];
-    const whiteness = Math.min(r, g, b);
-    let a = whiteness <= low ? 1 : 1 - (whiteness - low) / (high - low);
-    a = Math.max(0, Math.min(1, a));
-    if (a < 0.04) a = 0; // faint texture noise
-    if (a > 0) {
-      // Un-blend from white so edge pixels keep their true colour.
-      out[j] = Math.max(0, Math.min(255, Math.round((r - 255 * (1 - a)) / a)));
-      out[j + 1] = Math.max(0, Math.min(255, Math.round((g - 255 * (1 - a)) / a)));
-      out[j + 2] = Math.max(0, Math.min(255, Math.round((b - 255 * (1 - a)) / a)));
-    }
-    out[j + 3] = Math.round(a * 255);
+// Alpha at or below `low` is haze and becomes 0; between `low` and `high` it ramps back up to the
+// original value so anti-aliased edges keep a smooth falloff.
+async function cleanAlpha(input, { low = 16, high = 48 } = {}) {
+  const { data, info } = await sharp(input).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  for (let i = 3; i < data.length; i += 4) {
+    const a = data[i];
+    data[i] = a <= low ? 0 : a < high ? Math.round(a * (a - low) / (high - low)) : a;
   }
-  dropSpecks(out, info.width, info.height);
-  return sharp(out, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();
+  dropBlobs(data, info.width, info.height, isSpeck);
+  return sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();
 }
 
-// Clears connected blobs that are tiny or never reach solid opacity: texture specks, not artwork.
-// Real artwork (even the tagline's comma) always contains near-opaque pixels.
-function dropSpecks(rgba, width, height, { minArea = 8, minPeak = 150 } = {}) {
+// Tiny or never near-opaque: noise, not artwork. The smallest real shape, the tagline's comma, is
+// about 38 px at source size.
+const isSpeck = ({ area, peak }) => area < 30 || peak < 150;
+
+// Clears every connected blob (8-neighbour, alpha > 0) for which `drop(blob)` is true.
+// A blob is { area, peak, minX, minY, maxX, maxY } in source pixels.
+function dropBlobs(rgba, width, height, drop) {
   const n = width * height;
   const seen = new Uint8Array(n);
   const stack = new Int32Array(n);
-  const blob = [];
+  const pixels = [];
   for (let start = 0; start < n; start++) {
     if (seen[start] || rgba[start * 4 + 3] === 0) continue;
-    let top = 0, peak = 0;
-    blob.length = 0;
+    let top = 0;
+    const blob = { area: 0, peak: 0, minX: width, minY: height, maxX: 0, maxY: 0 };
+    pixels.length = 0;
     stack[top++] = start; seen[start] = 1;
     while (top) {
       const p = stack[--top];
-      blob.push(p);
-      peak = Math.max(peak, rgba[p * 4 + 3]);
+      pixels.push(p);
+      blob.peak = Math.max(blob.peak, rgba[p * 4 + 3]);
       const x = p % width, y = (p - x) / width;
+      blob.minX = Math.min(blob.minX, x); blob.maxX = Math.max(blob.maxX, x);
+      blob.minY = Math.min(blob.minY, y); blob.maxY = Math.max(blob.maxY, y);
       for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
         const nx = x + dx, ny = y + dy;
         if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
@@ -96,7 +92,8 @@ function dropSpecks(rgba, width, height, { minArea = 8, minPeak = 150 } = {}) {
         if (!seen[q] && rgba[q * 4 + 3] > 0) { seen[q] = 1; stack[top++] = q; }
       }
     }
-    if (blob.length < minArea || peak < minPeak) for (const p of blob) rgba[p * 4 + 3] = 0;
+    blob.area = pixels.length;
+    if (drop(blob)) for (const p of pixels) rgba[p * 4 + 3] = 0;
   }
 }
 
@@ -116,37 +113,30 @@ async function trimTransparent(pngBuffer) {
 
 // How strongly a pixel reads as the logo's red (0 = neutral grey/black/white).
 const redness = (r, g, b) => r - Math.max(g, b);
-const RED_MIN = 60;
 
-// Reversed logo for dark surfaces: every non-red pixel becomes white; red stays red.
-async function toWhiteVersion(pngBuffer) {
+// Reversed logo for dark surfaces: black and grey become white, red stays red. Pixels between the
+// two (dark red shading, red-to-black edges) blend, so there is no hard seam where they meet.
+async function toWhiteVersion(pngBuffer, { neutral = 30, red = 90 } = {}) {
   const { data, info } = await sharp(pngBuffer).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   for (let i = 0; i < data.length; i += 4) {
-    if (redness(data[i], data[i + 1], data[i + 2]) < RED_MIN) {
-      data[i] = 255; data[i + 1] = 255; data[i + 2] = 255;
-    }
+    const t = Math.max(0, Math.min(1, (redness(data[i], data[i + 1], data[i + 2]) - neutral) / (red - neutral)));
+    for (let c = 0; c < 3; c++) data[i + c] = Math.round(255 * (1 - t) + data[i + c] * t);
   }
   return sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();
 }
 
-// Keeps only the red parts of an image (the globe, arrow and parcel of the mark).
-async function redOnly(pngBuffer) {
-  const { data, info } = await sharp(pngBuffer).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  for (let i = 0; i < data.length; i += 4) {
-    const red = redness(data[i], data[i + 1], data[i + 2]);
-    if (red < RED_MIN) data[i + 3] = 0;
-    else if (red < RED_MIN + 40) data[i + 3] = Math.round(data[i + 3] * (red - RED_MIN) / 40); // soft edge
-  }
-  return sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();
-}
+// Icon mark: the ship and globe above the wordmark, without the speed lines behind the ship,
+// centred on a transparent square. Boxes measured on the 1774x887 original: the symbol sits in
+// x 545-1530, y 50-505; the three speed lines are separate shapes that end left of x 600.
+const MARK = { left: 545, top: 50, width: 985, height: 455 };
+const isSpeedLine = ({ maxX, minY, maxY }) => maxX < 600 && minY > 300 && maxY < 500;
 
-// Icon mark: the red globe, swoosh, arrow and parcel that form the "O" of NAVORA, without the
-// black letterforms around them, centred on a transparent square. Crop box measured on the
-// 2024x777 original (includes the arrow tip over the "R", stops above "FREIGHT").
 async function buildSquareMark(transparent) {
-  const MARK = { left: 1085, top: 160, width: 490, height: 292 };
-  const markRed = await redOnly(await sharp(transparent).extract(MARK).png().toBuffer());
-  const mark = await trimTransparent(markRed);
+  const { data, info } = await sharp(transparent).raw().toBuffer({ resolveWithObject: true });
+  dropBlobs(data, info.width, info.height, isSpeedLine);
+  const symbol = await sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } })
+    .extract(MARK).png().toBuffer();
+  const mark = await trimTransparent(symbol);
   const markMeta = await sharp(mark).metadata();
   const side = Math.max(markMeta.width, markMeta.height);
   return sharp(mark)
@@ -162,11 +152,12 @@ async function buildSquareMark(transparent) {
 // size (never resized from another icon). `inset` is the share of the canvas the mark may fill.
 const CLEAR = { r: 0, g: 0, b: 0, alpha: 0 };
 const ICONS = [
-  // Tab icons sit on a white rounded tile so the red mark stays visible on dark browser tabs.
+  // Every non-maskable icon sits on a white rounded tile: the mark's black hull would vanish on a
+  // dark browser tab or launcher.
   { file: 'favicon-16.png', size: 16, inset: 1, bg: '#ffffff', tile: true },  // browser tab (standard DPI)
   { file: 'favicon-32.png', size: 32, inset: 0.94, bg: '#ffffff', tile: true }, // browser tab (retina), taskbar
-  { file: 'icon-192.png', size: 192, inset: 0.92, bg: CLEAR },        // Android home screen, manifest
-  { file: 'favicon.png', size: 512, inset: 0.92, bg: CLEAR },         // manifest, install splash
+  { file: 'icon-192.png', size: 192, inset: 0.86, bg: '#ffffff', tile: true },  // Android home screen, manifest
+  { file: 'favicon.png', size: 512, inset: 0.86, bg: '#ffffff', tile: true },   // manifest, install splash
   { file: 'icon-maskable-512.png', size: 512, inset: 0.64, bg: '#ffffff' }, // Android adaptive: fits the 80% safe circle
   { file: 'apple-touch-icon.png', size: 180, inset: 0.76, bg: '#ffffff' },  // iOS fills transparency with black, so white
 ];
@@ -193,23 +184,36 @@ async function buildIcons(squareMark) {
 
 const LOGO_PNG = { palette: true, quality: 90, effort: 10, compressionLevel: 9 };
 const OG_BACKGROUND = '#181818'; // --ngf-ink-950, the dark hero/footer surface
-const OG_LOGO_WIDTH = 900;
+const OG_LOGO_BOX = { width: 960, height: 480 };
+// Header and footer copies (LOGO_WEB / LOGO_WHITE_WEB in brand.ts): 2x the tallest CSS height
+// they are shown at, so they stay sharp on retina screens. Update LOGO_WEB_SIZE after a change.
+const LOGO_WEB_HEIGHT = 160;
 
 async function buildBrand() {
-  const transparent = await whiteToAlpha(path.join(SRC, LOGO_SRC));
+  const transparent = await cleanAlpha(path.join(SRC, LOGO_SRC));
   const trimmed = await trimTransparent(transparent);
   await sharp(trimmed).png(LOGO_PNG).toFile(path.join(BRAND_OUT, 'logo.png'));
 
   const white = await toWhiteVersion(trimmed);
   await sharp(white).png(LOGO_PNG).toFile(path.join(BRAND_OUT, 'logo-white.png'));
 
+  for (const [src, file] of [[trimmed, 'logo-web.webp'], [white, 'logo-white-web.webp']]) {
+    const info = await sharp(src)
+      .resize({ height: LOGO_WEB_HEIGHT, withoutEnlargement: true, kernel: 'lanczos3' })
+      .webp({ quality: 86, alphaQuality: 90, effort: 6 })
+      .toFile(path.join(BRAND_OUT, file));
+    console.log(`${file}: ${info.width}x${info.height}`);
+  }
+
   const squareMark = await buildSquareMark(transparent);
-  await sharp(squareMark).png(LOGO_PNG).toFile(path.join(BRAND_OUT, 'mark.png'));
+  // mark.png is shown at 40 px on Home and as the JSON-LD logo; 512 px is plenty for both.
+  await sharp(squareMark).resize(512, 512, { withoutEnlargement: true, kernel: 'lanczos3' })
+    .png(LOGO_PNG).toFile(path.join(BRAND_OUT, 'mark.png'));
   await buildIcons(squareMark);
 
   // OG image 1200x630: reversed logo centred on the brand Ink. Never upscaled.
-  const { width: logoW } = await sharp(white).metadata();
-  const ogLogo = await sharp(white).resize({ width: Math.min(OG_LOGO_WIDTH, logoW), kernel: 'lanczos3' }).png().toBuffer();
+  const ogLogo = await sharp(white)
+    .resize({ ...OG_LOGO_BOX, fit: 'inside', withoutEnlargement: true, kernel: 'lanczos3' }).png().toBuffer();
   await sharp({ create: { width: 1200, height: 630, channels: 4, background: OG_BACKGROUND } })
     .composite([{ input: ogLogo, gravity: 'centre' }])
     .flatten({ background: OG_BACKGROUND })
@@ -372,7 +376,7 @@ export type SiteImageName = keyof typeof SITE_IMAGES;
 
 // --icons rebuilds only the icon set, leaving the logos, OG image and photos untouched.
 if (process.argv.includes('--icons')) {
-  await buildIcons(await buildSquareMark(await whiteToAlpha(path.join(SRC, LOGO_SRC))));
+  await buildIcons(await buildSquareMark(await cleanAlpha(path.join(SRC, LOGO_SRC))));
   console.log('Icons done.');
 } else if (RECOMPRESS) {
   // Photos only: the brand assets need the logo original.

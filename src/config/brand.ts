@@ -17,11 +17,11 @@ export const SITE_URL = `https://${DOMAIN}`;
 export const LOGO = '/brand/logo.png';
 export const LOGO_WHITE = '/brand/logo-white.png';
 export const LOGO_ALT = COMPANY;
-// Smaller copies for the site header and footer (shown at most 56px tall). Documents and PDFs
+// Smaller copies for the site header and footer (shown at most 80px tall). Documents and PDFs
 // keep the full-size PNGs above.
 export const LOGO_WEB = '/brand/logo-web.webp';
 export const LOGO_WHITE_WEB = '/brand/logo-white-web.webp';
-export const LOGO_WEB_SIZE = { width: 438, height: 112 };
+export const LOGO_WEB_SIZE = { width: 323, height: 160 };
 
 // The admin console only opens on <ADMIN_SUBDOMAIN>.<DOMAIN> (plus localhost for development).
 export const ADMIN_SUBDOMAIN = 'private';

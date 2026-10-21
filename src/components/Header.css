@@ -95,7 +95,7 @@
 }
 
 .ngf-brand-logo-img {
-  height: 52px;
+  height: 68px;
   width: auto;
   max-width: 250px;
   object-fit: contain;
@@ -279,7 +279,7 @@
 }
 
 .drawer-logo-img {
-  height: 42px;
+  height: 56px;
   width: auto;
   max-width: 190px;
   object-fit: contain;
@@ -540,7 +540,7 @@
     height: 74px;
   }
   .ngf-brand-logo-img {
-    height: 46px;
+    height: 60px;
     max-width: 210px;
   }
 }
@@ -550,7 +550,7 @@
     height: 68px;
   }
   .ngf-brand-logo-img {
-    height: 40px;
+    height: 54px;
     max-width: 180px;
   }
   .ngf-mobile-drawer-sheet {
