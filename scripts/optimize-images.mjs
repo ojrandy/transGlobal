@@ -183,7 +183,7 @@ async function buildIcons(squareMark) {
 }
 
 const LOGO_PNG = { palette: true, quality: 90, effort: 10, compressionLevel: 9 };
-const OG_BACKGROUND = '#181818'; // --ngf-ink-950, the dark hero/footer surface
+const OG_BACKGROUND = '#181818'; // --tgf-ink-950, the dark hero/footer surface
 const OG_LOGO_BOX = { width: 960, height: 480 };
 // Header and footer copies (LOGO_WEB / LOGO_WHITE_WEB in brand.ts): 2x the tallest CSS height
 // they are shown at, so they stay sharp on retina screens. Update LOGO_WEB_SIZE after a change.

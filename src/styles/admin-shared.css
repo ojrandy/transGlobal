@@ -36,7 +36,7 @@
 }
 
 .piece-id-tag {
-  color: var(--ngf-accent-500);
+  color: var(--tgf-accent-500);
   font-weight: 700;
   font-size: 0.75rem;
 }
@@ -92,7 +92,7 @@
 
 /* ---- from admin/pages/AllShipmentsView.css ---- */
 .text-blue { color: #2563eb !important; }
-.text-accent { color: var(--ngf-accent-500) !important; }
+.text-accent { color: var(--tgf-accent-500) !important; }
 .text-emerald { color: #059669 !important; }
 
 .modal-title-wrap {
@@ -105,7 +105,7 @@
   margin: 0;
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--ngf-ink-950);
+  color: var(--tgf-ink-950);
 }
 
 .modal-title-wrap p {
@@ -128,11 +128,11 @@
 }
 
 .modal-close-btn:hover {
-  color: var(--ngf-ink-950);
+  color: var(--tgf-ink-950);
 }
 
 .status-highlight {
-  color: var(--ngf-accent-500) !important;
+  color: var(--tgf-accent-500) !important;
 }
 
 .piece-manifest-card {
@@ -240,7 +240,7 @@
 }
 
 .s-val {
-  color: var(--ngf-ink-950);
+  color: var(--tgf-ink-950);
   font-weight: 700;
   text-align: right;
 }
@@ -286,7 +286,7 @@
 
 .icon-blue {
   background: #eff6ff;
-  color: var(--ngf-primary-900);
+  color: var(--tgf-primary-900);
 }
 
 .icon-emerald {
@@ -377,7 +377,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--ngf-ink-950);
+  background-color: var(--tgf-ink-950);
   background-image:
     radial-gradient(ellipse at center, rgba(10, 12, 16, 0.35) 0%, rgba(10, 12, 16, 0.82) 75%),
     linear-gradient(180deg, rgba(10, 12, 16, 0.55) 0%, rgba(10, 12, 16, 0.25) 45%, rgba(10, 12, 16, 0.7) 100%),
@@ -391,7 +391,7 @@
   background-repeat: no-repeat;
   padding: 1.5rem;
   box-sizing: border-box;
-  font-family: var(--ngf-font-sans, 'Inter', sans-serif);
+  font-family: var(--tgf-font-sans, 'Inter', sans-serif);
 }
 @media (max-width: 768px) {
   .admin-login-shell {

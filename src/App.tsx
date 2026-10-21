@@ -466,13 +466,13 @@ function MainAppContent() {
   }
 
   return (
-    <div className="ngf-app-shell">
+    <div className="tgf-app-shell">
       <Header
         activePage={currentPage}
         onNavigate={handleNavigate}
       />
 
-      <main className="ngf-main-view">
+      <main className="tgf-main-view">
         {isTrackSearching ? (
           <TrackingLoadingScreen query={trackSearchQuery} />
         ) : (

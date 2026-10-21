@@ -27,10 +27,10 @@ export const PaymentQr: React.FC<PaymentQrProps> = ({ value, methodLabel }) => {
   if (failed) return null;
 
   return (
-    <figure className="ngf-pm-qr">
+    <figure className="tgf-pm-qr">
       {src
         ? <img src={src} alt={`QR code for ${methodLabel}`} width={QR_SIZE} height={QR_SIZE} />
-        : <span className="ngf-pm-qr-placeholder" aria-hidden="true" />}
+        : <span className="tgf-pm-qr-placeholder" aria-hidden="true" />}
       <figcaption>Scan with your wallet or camera app.</figcaption>
     </figure>
   );

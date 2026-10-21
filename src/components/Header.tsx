@@ -69,14 +69,14 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="ngf-header-wrapper">
-      <button type="button" className="ngf-skip-link" onClick={skipToContent}>
+    <header className="tgf-header-wrapper">
+      <button type="button" className="tgf-skip-link" onClick={skipToContent}>
         Skip to main content
       </button>
       {/* 1. TOP UTILITY BAR (Hidden completely on mobile to eliminate clutter) */}
-      <div className="ngf-topbar hide-mobile-topbar">
-        <div className="ngf-container-wide ngf-topbar-inner">
-          <div className="ngf-topbar-left">
+      <div className="tgf-topbar hide-mobile-topbar">
+        <div className="tgf-container-wide tgf-topbar-inner">
+          <div className="tgf-topbar-left">
             <div className="topbar-item">
               <Clock size={13} className="text-emerald" />
               <span>24/7 Global Support</span>
@@ -104,23 +104,23 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* 2. MAIN NAVIGATION BAR */}
-      <div className="ngf-main-header">
-        <div className="ngf-container-wide ngf-header-inner">
+      <div className="tgf-main-header">
+        <div className="tgf-container-wide tgf-header-inner">
           {/* Brand Logo */}
-          <a href="#/" className="ngf-logo-wrap" onClick={goHome} aria-label={`${COMPANY} home`}>
+          <a href="#/" className="tgf-logo-wrap" onClick={goHome} aria-label={`${COMPANY} home`}>
             <img
               src={LOGO_WEB}
               alt={LOGO_ALT}
               width={LOGO_WEB_SIZE.width}
               height={LOGO_WEB_SIZE.height}
-              className="ngf-brand-logo-img"
+              className="tgf-brand-logo-img"
               onError={(e) => {
                 const target = e.currentTarget;
                 target.style.display = 'none';
                 const parent = target.parentElement;
-                if (parent && !parent.querySelector('.ngf-fallback-logo')) {
+                if (parent && !parent.querySelector('.tgf-fallback-logo')) {
                   const fallback = document.createElement('div');
-                  fallback.className = 'ngf-fallback-logo';
+                  fallback.className = 'tgf-fallback-logo';
                   fallback.textContent = COMPANY;
                   parent.appendChild(fallback);
                 }
@@ -129,52 +129,52 @@ export const Header: React.FC<HeaderProps> = ({
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="ngf-nav-links">
+          <nav className="tgf-nav-links">
             <button
               type="button"
-              className={`ngf-nav-link ${activePage === 'track' ? 'active' : ''}`}
+              className={`tgf-nav-link ${activePage === 'track' ? 'active' : ''}`}
               onClick={() => handleNav('track')}
             >
               Track
             </button>
             <button
               type="button"
-              className={`ngf-nav-link ${activePage === 'ship' ? 'active' : ''}`}
+              className={`tgf-nav-link ${activePage === 'ship' ? 'active' : ''}`}
               onClick={() => handleNav('ship')}
             >
               Ship
             </button>
             <button
               type="button"
-              className={`ngf-nav-link ${activePage === 'services' ? 'active' : ''}`}
+              className={`tgf-nav-link ${activePage === 'services' ? 'active' : ''}`}
               onClick={() => handleNav('services')}
             >
               Services
             </button>
             <button
               type="button"
-              className={`ngf-nav-link ${activePage === 'locations' ? 'active' : ''}`}
+              className={`tgf-nav-link ${activePage === 'locations' ? 'active' : ''}`}
               onClick={() => handleNav('locations')}
             >
               Network
             </button>
             <button
               type="button"
-              className={`ngf-nav-link ${activePage === 'about' ? 'active' : ''}`}
+              className={`tgf-nav-link ${activePage === 'about' ? 'active' : ''}`}
               onClick={() => handleNav('about')}
             >
               About
             </button>
             <button
               type="button"
-              className={`ngf-nav-link ${activePage === 'help' ? 'active' : ''}`}
+              className={`tgf-nav-link ${activePage === 'help' ? 'active' : ''}`}
               onClick={() => handleNav('help')}
             >
               Help
             </button>
             <button
               type="button"
-              className={`ngf-nav-link ${activePage === 'contact' ? 'active' : ''}`}
+              className={`tgf-nav-link ${activePage === 'contact' ? 'active' : ''}`}
               onClick={() => handleNav('contact')}
             >
               Contact
@@ -182,10 +182,10 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
 
           {/* Header Primary Action Button */}
-          <div className="ngf-header-actions">
+          <div className="tgf-header-actions">
             <button
               type="button"
-              className="ngf-btn-top-quote"
+              className="tgf-btn-top-quote"
               onClick={() => handleNav('quote')}
             >
               <Calculator size={15} />
@@ -196,7 +196,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile Hamburger Toggle Button */}
           <button
             type="button"
-            className={`ngf-mobile-toggle-btn ${mobileMenuOpen ? 'is-active' : ''}`}
+            className={`tgf-mobile-toggle-btn ${mobileMenuOpen ? 'is-active' : ''}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
@@ -208,9 +208,9 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* 3. EXECUTIVE MOBILE DRAWER OVERLAY */}
       {mobileMenuOpen && (
-        <div className="ngf-drawer-backdrop" onClick={() => setMobileMenuOpen(false)}>
+        <div className="tgf-drawer-backdrop" onClick={() => setMobileMenuOpen(false)}>
           <div
-            className="ngf-mobile-drawer-sheet animate-slide-left"
+            className="tgf-mobile-drawer-sheet animate-slide-left"
             role="dialog"
             aria-modal="true"
             aria-label="Menu"

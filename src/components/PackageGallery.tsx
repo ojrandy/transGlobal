@@ -34,17 +34,17 @@ export const PackageGallery: React.FC<PackageGalleryProps> = ({ images }) => {
   };
 
   return (
-    <section className="ngf-gallery-section" aria-labelledby="track-gallery-title">
+    <section className="tgf-gallery-section" aria-labelledby="track-gallery-title">
       <h3 id="track-gallery-title" className="card-section-title">Package images</h3>
-      <p className="ngf-gallery-intro">Photos our team has added for this shipment.</p>
+      <p className="tgf-gallery-intro">Photos our team has added for this shipment.</p>
       {/* data-count sets the columns from tablet width up: 1 photo full width, 2 halves, 3+ thirds. */}
-      <ul className="ngf-gallery-grid" data-count={Math.min(images.length, 3)}>
+      <ul className="tgf-gallery-grid" data-count={Math.min(images.length, 3)}>
         {images.map((image, index) => (
           <li key={`${index}-${image.url.slice(0, 80)}`}>
-            <figure className="ngf-gallery-item">
+            <figure className="tgf-gallery-item">
               <button
                 type="button"
-                className="ngf-gallery-thumb"
+                className="tgf-gallery-thumb"
                 aria-label={`Open photo: ${image.caption}`}
                 onClick={(e) => {
                   openerRef.current = e.currentTarget;

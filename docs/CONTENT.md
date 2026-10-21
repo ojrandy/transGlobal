@@ -662,13 +662,13 @@ The text below is rendered from `src/data/legalDocs.ts`; change both together. P
 
 **Cookie Policy**
 1. *Cookies we use.*
-   We use one essential cookie, ngf.sid. It keeps Trans Global staff signed in to our operations console for up to 12 hours. It is not set for visitors to the public website.
+   We use one essential cookie, tgf.sid. It keeps Trans Global staff signed in to our operations console for up to 12 hours. It is not set for visitors to the public website.
    We do not use analytics or advertising cookies. If we add analytics, we will update this page and ask for your consent where the law requires it.
 2. *Choices saved in your browser.*
    Some pages remember a few choices in your browser's local storage. This data stays on your device and is not sent to us:
-   - ngf_recent_tracking: tracking IDs you looked up recently, so you can open them again.
-   - ngf_units: whether you prefer metric or imperial units.
-   - ngf_live_shipment_stream: the latest update for a shipment you are viewing, so other open tabs stay in step.
+   - tgf_recent_tracking: tracking IDs you looked up recently, so you can open them again.
+   - tgf_units: whether you prefer metric or imperial units.
+   - tgf_live_shipment_stream: the latest update for a shipment you are viewing, so other open tabs stay in step.
    You can clear these at any time in your browser settings.
 3. *Other services our pages use.*
    Our pages load map tiles from Esri (ArcGIS), fonts from Google Fonts and some photos from Unsplash, and use OpenStreetMap Nominatim and OSRM to look up addresses and routes. These services receive your IP address when your browser contacts them.

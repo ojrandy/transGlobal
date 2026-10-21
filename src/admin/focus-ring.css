@@ -3,6 +3,6 @@
    `outline: none` on inputs would hide the ring. Loaded last in admin/styles.ts, which restores
    the original order: the ring wins ties, a component's own :focus-visible style still wins. */
 :where(a, button, [role="button"], [tabindex], summary, select, input, textarea):focus-visible {
-  outline: 2px solid var(--ngf-color-focus);
+  outline: 2px solid var(--tgf-color-focus);
   outline-offset: 2px;
 }

@@ -248,7 +248,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
   };
 
   return (
-    <div className="ngf-homepage-container">
+    <div className="tgf-homepage-container">
       {/* =========================================================================
           1. HERO (CONTENT.md §2.1)
           ========================================================================= */}
@@ -263,7 +263,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           imgClassName="corp-hero-img"
         />
         <div className="corp-hero-overlay" />
-        <div className="ngf-container-wide corp-hero-inner">
+        <div className="tgf-container-wide corp-hero-inner">
           <div className="corp-hero-content animate-fade-in">
             <div className="corp-hero-badge">
               <span className="badge-pulse-dot" />
@@ -272,7 +272,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
 
             <h1 className="corp-hero-title">
               Connecting Markets, <br />
-              <span className="ngf-highlight">Delivering Trust.</span>
+              <span className="tgf-highlight">Delivering Trust.</span>
             </h1>
 
             <p className="corp-hero-subtitle">
@@ -363,7 +363,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           2. WHY SHIPPERS CHOOSE US (CONTENT.md §2.2)
           ========================================================================= */}
       <section className="corp-why-choose-section">
-        <div className="ngf-container-wide">
+        <div className="tgf-container-wide">
           <div className="section-center-header">
             <span className="section-eyebrow">WHY {COMPANY_SHORT.toUpperCase()}</span>
             <h2>Why shippers around the world choose {COMPANY_SHORT}</h2>
@@ -438,7 +438,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           3. HOW IT WORKS (CONTENT.md §2.3)
           ========================================================================= */}
       <section className="corp-how-it-works-section">
-        <div className="ngf-container-wide">
+        <div className="tgf-container-wide">
           <div className="section-center-header">
             <span className="section-eyebrow">HOW IT WORKS</span>
             <h2>How {COMPANY_SHORT} moves your shipment</h2>
@@ -504,7 +504,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           4. ABOUT STRIP (CONTENT.md §2.4)
           ========================================================================= */}
       <section className="corp-about-section">
-        <div className="ngf-container-wide corp-about-grid">
+        <div className="tgf-container-wide corp-about-grid">
           {/* Left Stacked Image Stage */}
           <div className="about-image-stage">
             <div className="about-main-img-wrapper">
@@ -572,7 +572,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           5. SERVICES (CONTENT.md §2.5)
           ========================================================================= */}
       <section className="corp-services-section">
-        <div className="ngf-container-wide">
+        <div className="tgf-container-wide">
           <div className="section-center-header light">
             <span className="section-eyebrow text-accent">WHAT WE MOVE</span>
             <h2>Specialised transport for cargo that matters</h2>
@@ -613,7 +613,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           6. INDUSTRIES (CONTENT.md §2.6)
           ========================================================================= */}
       <section className="corp-industry-section">
-        <div className="ngf-container-wide">
+        <div className="tgf-container-wide">
           <div className="section-center-header">
             <span className="section-eyebrow">INDUSTRIES</span>
             <h2>Logistics shaped around your industry</h2>
@@ -666,7 +666,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           7. GLOBAL NETWORK MAP (CONTENT.md §2.7)
           ========================================================================= */}
       <section className="corp-hubs-map-section">
-        <div className="ngf-container-wide">
+        <div className="tgf-container-wide">
           <div className="hubs-map-header">
             <div>
               <span className="section-eyebrow text-accent">GLOBAL NETWORK</span>
@@ -743,7 +743,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           8. TRUST MATRIX (CONTENT.md §2.8)
           ========================================================================= */}
       <section className="corp-trust-matrix-section">
-        <div className="ngf-container-wide">
+        <div className="tgf-container-wide">
           <div className="section-center-header">
             <span className="section-eyebrow">SAFE HANDS</span>
             <h2>Your cargo is safe with us</h2>
@@ -768,7 +768,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           9. BARCODE SPOTLIGHT (CONTENT.md §2.9)
           ========================================================================= */}
       <section className="corp-barcode-spotlight-section">
-        <div className="ngf-container-wide barcode-spotlight-grid">
+        <div className="tgf-container-wide barcode-spotlight-grid">
           <div className="barcode-text-col">
             <span className="section-eyebrow text-accent">SMART LABELS</span>
             <h2>One label. Every checkpoint. Zero guesswork.</h2>
@@ -838,7 +838,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           10. OUR COMMITMENTS (CONTENT.md §2.10, Option A)
           ========================================================================= */}
       <section className="corp-testimonial-section">
-        <div className="ngf-container-wide">
+        <div className="tgf-container-wide">
           <div className="section-center-header">
             <span className="section-eyebrow">OUR COMMITMENTS</span>
             <h2>What you can hold us to</h2>
@@ -861,7 +861,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           11. MODES WE CONNECT (CONTENT.md §2.11)
           ========================================================================= */}
       <section className="corp-partners-strip">
-        <div className="ngf-container-wide">
+        <div className="tgf-container-wide">
           <div className="partners-label">MODES WE CONNECT</div>
           <ul className="modes-row">
             {MODES.map((mode) => (
@@ -886,7 +886,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           imgClassName="callback-banner-img"
         />
         <div className="callback-banner-overlay" />
-        <div className="ngf-container callback-inner">
+        <div className="tgf-container callback-inner">
           <div className="callback-text-block">
             <h3>Need an urgent collection or a custom rate?</h3>
             <p>Leave your number and a coordinator will call you back, usually within 30 minutes during business hours.</p>
@@ -947,7 +947,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onTrack, onNavigate }) => {
           13. FAQ (CONTENT.md §2.13)
           ========================================================================= */}
       <section className="corp-faq-section">
-        <div className="ngf-container">
+        <div className="tgf-container">
           <div className="section-center-header">
             <span className="section-eyebrow">COMMON QUESTIONS</span>
             <h2>Frequently Asked Questions</h2>

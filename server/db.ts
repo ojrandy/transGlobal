@@ -16,7 +16,7 @@ export const dataDir = process.env.DB_PATH
   ? path.dirname(process.env.DB_PATH)
   : path.join(process.cwd(), 'data');
 
-export const DB_FILE = 'navora.db';
+export const DB_FILE = 'transglobal.db';
 
 // The admin-subdomain deployment runs in proxy mode (ADMIN_PROXY_TARGET, see server/index.ts)
 // and never touches a database — every route file still does a static `import { db } from

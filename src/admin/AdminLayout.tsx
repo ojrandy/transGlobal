@@ -137,11 +137,11 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
   const currentMeta = VIEW_METADATA[currentView] || VIEW_METADATA['operations-center'];
 
   return (
-    <div className="ngf-admin-root">
+    <div className="tgf-admin-root">
       {/* =========================================================================
           LEFT SIDEBAR: EXECUTIVE DISPATCH COMMAND (DEEP NAVY)
           ========================================================================= */}
-      <aside className={`ngf-admin-sidebar ${mobileSidebarOpen ? 'open' : ''}`}>
+      <aside className={`tgf-admin-sidebar ${mobileSidebarOpen ? 'open' : ''}`}>
         {/* Brand Header */}
         <div className="admin-sidebar-header">
           <div className="admin-brand-card" onClick={() => onSelectView('operations-center')}>
@@ -323,9 +323,9 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       {/* =========================================================================
           MAIN WORKSPACE WRAPPER
           ========================================================================= */}
-      <div className="ngf-admin-main-wrapper">
+      <div className="tgf-admin-main-wrapper">
         {/* TOP DISPATCH HEADER */}
-        <header className="ngf-admin-top-header">
+        <header className="tgf-admin-top-header">
           {/* Left Column: Clean View Title */}
           <div className="header-titles-column">
             <button className="mobile-menu-trigger" onClick={() => setMobileSidebarOpen(true)}>
@@ -490,7 +490,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
         </header>
 
         {/* DYNAMIC VIEW BODY */}
-        <main className="ngf-admin-page-content">
+        <main className="tgf-admin-page-content">
           {children}
         </main>
       </div>

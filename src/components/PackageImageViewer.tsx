@@ -63,22 +63,22 @@ export const PackageImageViewer: React.FC<PackageImageViewerProps> = ({ images, 
   if (!image) return null;
 
   return (
-    <div className="ngf-viewer-backdrop" onClick={onClose}>
+    <div className="tgf-viewer-backdrop" onClick={onClose}>
       <div
         ref={dialogRef}
-        className="ngf-viewer"
+        className="tgf-viewer"
         role="dialog"
         aria-modal="true"
         aria-label={`Photo ${index + 1} of ${total}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="ngf-viewer-bar">
-          <span className="ngf-viewer-count" aria-live="polite">Photo {index + 1} of {total}</span>
-          <button ref={closeRef} type="button" className="ngf-viewer-btn" onClick={onClose} aria-label="Close">
+        <div className="tgf-viewer-bar">
+          <span className="tgf-viewer-count" aria-live="polite">Photo {index + 1} of {total}</span>
+          <button ref={closeRef} type="button" className="tgf-viewer-btn" onClick={onClose} aria-label="Close">
             <X size={20} aria-hidden="true" />
           </button>
         </div>
-        <figure className="ngf-viewer-figure">
+        <figure className="tgf-viewer-figure">
           <img
             key={image.url}
             src={image.url}
@@ -90,10 +90,10 @@ export const PackageImageViewer: React.FC<PackageImageViewerProps> = ({ images, 
         </figure>
         {total > 1 && (
           <>
-            <button type="button" className="ngf-viewer-btn ngf-viewer-prev" onClick={() => go(-1)} aria-label="Previous photo">
+            <button type="button" className="tgf-viewer-btn tgf-viewer-prev" onClick={() => go(-1)} aria-label="Previous photo">
               <ChevronLeft size={24} aria-hidden="true" />
             </button>
-            <button type="button" className="ngf-viewer-btn ngf-viewer-next" onClick={() => go(1)} aria-label="Next photo">
+            <button type="button" className="tgf-viewer-btn tgf-viewer-next" onClick={() => go(1)} aria-label="Next photo">
               <ChevronRight size={24} aria-hidden="true" />
             </button>
           </>

@@ -191,7 +191,7 @@ export const AllShipmentsView: React.FC<AllShipmentsViewProps> = ({
   const delayedCount = shipments.filter(s => s.status === 'DELAYED' || s.status === 'EXCEPTION' || s.status === 'ON_HOLD').length;
 
   return (
-    <div className="ngf-shipments-page">
+    <div className="tgf-shipments-page">
       {successToast && (
         <div className={`admin-toast-banner animate-fade-in${toastIsError ? ' toast-error' : ''}`}>
           {toastIsError ? <AlertCircle size={18} className="text-crimson" /> : <CheckCircle2 size={18} className="text-emerald" />}

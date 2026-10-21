@@ -100,46 +100,46 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="ngf-pro-footer-wrapper">
+    <footer className="tgf-pro-footer-wrapper">
       {/* 1. TRUST FEATURE STRIP */}
       {showTrustStrip && (
-        <div className="ngf-footer-trust-strip">
-          <div className="ngf-container-wide ngf-trust-grid">
-            <div className="ngf-trust-card">
-              <div className="ngf-trust-icon">
+        <div className="tgf-footer-trust-strip">
+          <div className="tgf-container-wide tgf-trust-grid">
+            <div className="tgf-trust-card">
+              <div className="tgf-trust-icon">
                 <Globe size={24} />
               </div>
-              <div className="ngf-trust-info">
+              <div className="tgf-trust-info">
                 <h3>Worldwide Coverage</h3>
                 <p>Air, ocean and road, connected.</p>
               </div>
             </div>
 
-            <div className="ngf-trust-card">
-              <div className="ngf-trust-icon">
+            <div className="tgf-trust-card">
+              <div className="tgf-trust-icon">
                 <Clock size={24} />
               </div>
-              <div className="ngf-trust-info">
+              <div className="tgf-trust-info">
                 <h3>Live Milestones</h3>
                 <p>Every hand-off scanned and time-stamped.</p>
               </div>
             </div>
 
-            <div className="ngf-trust-card">
-              <div className="ngf-trust-icon">
+            <div className="tgf-trust-card">
+              <div className="tgf-trust-icon">
                 <Layers size={24} />
               </div>
-              <div className="ngf-trust-info">
+              <div className="tgf-trust-info">
                 <h3>Piece-Level Labels</h3>
                 <p>Every carton individually barcoded.</p>
               </div>
             </div>
 
-            <div className="ngf-trust-card">
-              <div className="ngf-trust-icon">
+            <div className="tgf-trust-card">
+              <div className="tgf-trust-icon">
                 <ShieldCheck size={24} />
               </div>
-              <div className="ngf-trust-info">
+              <div className="tgf-trust-info">
                 <h3>Signed Delivery</h3>
                 <p>Digital proof of delivery on every shipment.</p>
               </div>
@@ -149,34 +149,34 @@ export const Footer: React.FC<FooterProps> = ({
       )}
 
       {/* 2. MAIN EXECUTIVE FOOTER */}
-      <div className="ngf-pro-footer-main">
+      <div className="tgf-pro-footer-main">
         {/* Subtle Map Watermark Background */}
         <div className="footer-world-map-bg" />
         
         {/* Glowing Accent Corner Swoosh */}
         <div className="footer-accent-swoosh" />
 
-        <div className="ngf-container-wide footer-content-relative">
-          <div className="ngf-pro-footer-grid">
+        <div className="tgf-container-wide footer-content-relative">
+          <div className="tgf-pro-footer-grid">
             {/* Column 1: Brand & Tagline */}
-            <div className="ngf-pro-brand-col">
-              <a className="ngf-pro-footer-logo" href={hrefFor('home')} onClick={go('home')}>
+            <div className="tgf-pro-brand-col">
+              <a className="tgf-pro-footer-logo" href={hrefFor('home')} onClick={go('home')}>
                 <img
                   src={LOGO_WHITE_WEB}
                   alt={LOGO_ALT}
                   width={LOGO_WEB_SIZE.width}
                   height={LOGO_WEB_SIZE.height}
                   loading="lazy"
-                  className="ngf-pro-footer-logo-img"
+                  className="tgf-pro-footer-logo-img"
                 />
               </a>
 
-              <p className="ngf-pro-brand-desc">
+              <p className="tgf-pro-brand-desc">
                 Express, freight and secure cargo across borders, with one tracking ID and one accountable team from pickup to proof of delivery.
               </p>
 
               {SOCIAL_LINKS.some(s => SOCIAL[s.key]) && (
-                <div className="ngf-pro-socials">
+                <div className="tgf-pro-socials">
                   {SOCIAL_LINKS.filter(s => SOCIAL[s.key]).map(({ key, label, Icon }) => (
                     <a key={key} href={SOCIAL[key]} className="pro-social-btn" aria-label={label} target="_blank" rel="noopener noreferrer">
                       <Icon size={15} />
@@ -185,7 +185,7 @@ export const Footer: React.FC<FooterProps> = ({
                 </div>
               )}
 
-              <div className="ngf-pro-faster-tagline font-mono">
+              <div className="tgf-pro-faster-tagline font-mono">
                 <span>{TAGLINE.toUpperCase()}.</span>
                 <div className="tagline-bar" />
               </div>
@@ -193,12 +193,12 @@ export const Footer: React.FC<FooterProps> = ({
 
             {/* Columns 2–5: Services · Company · Support · Legal */}
             {FOOTER_COLUMNS.map(({ title, links }) => (
-              <nav key={title} className="ngf-pro-links-col" aria-label={title}>
-                <h4 className="ngf-pro-col-title">
+              <nav key={title} className="tgf-pro-links-col" aria-label={title}>
+                <h4 className="tgf-pro-col-title">
                   {title}
                   <span className="title-accent-dash" />
                 </h4>
-                <ul className="ngf-pro-links-list">
+                <ul className="tgf-pro-links-list">
                   {links.map(({ label, page, param }) => (
                     <li key={label}>
                       <a href={hrefFor(page, param)} onClick={go(page, param)}>
@@ -213,7 +213,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           {/* 3. BOTTOM BAR */}
-          <div className="ngf-pro-footer-bottom">
+          <div className="tgf-pro-footer-bottom">
             <div className="pro-copy-text">
               © {new Date().getFullYear()} {LEGAL_NAME}. All rights reserved.
               {address && <> · {address}</>}

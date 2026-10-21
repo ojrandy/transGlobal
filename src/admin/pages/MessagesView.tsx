@@ -87,7 +87,7 @@ export const MessagesView: React.FC<MessagesViewProps> = ({ searchQuery, onMessa
   }), [messages]);
 
   return (
-    <div className="ngf-messages-workspace animate-fade-in">
+    <div className="tgf-messages-workspace animate-fade-in">
       <div className="messages-toolbar">
         <div className="messages-filters" role="tablist" aria-label="Filter messages">
           {FILTERS.map((f) => (

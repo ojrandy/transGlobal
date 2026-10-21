@@ -115,20 +115,20 @@ export const PaymentProofForm: React.FC<PaymentProofFormProps> = ({ trackingNumb
   };
 
   const describedBy = (f: Field, hint?: string) => [hint, errors[f] ? errorId(f) : null].filter(Boolean).join(' ') || undefined;
-  const errorText = (f: Field) => errors[f] && <p id={errorId(f)} className="ngf-proof-error">{errors[f]}</p>;
+  const errorText = (f: Field) => errors[f] && <p id={errorId(f)} className="tgf-proof-error">{errors[f]}</p>;
 
   return (
     <form
-      className={`ngf-proof-form${embedded ? ' is-embedded' : ''}`}
+      className={`tgf-proof-form${embedded ? ' is-embedded' : ''}`}
       onSubmit={submit}
       noValidate
       {...(embedded ? { 'aria-label': 'Send proof of payment' } : { 'aria-labelledby': `${id}-title` })}
     >
-      {!embedded && <h4 id={`${id}-title`} className="ngf-pay-methods-title">Send proof of payment</h4>}
-      <p className="ngf-pay-methods-sub">After paying, upload a screenshot or photo of the receipt so our team can confirm it.</p>
+      {!embedded && <h4 id={`${id}-title`} className="tgf-pay-methods-title">Send proof of payment</h4>}
+      <p className="tgf-pay-methods-sub">After paying, upload a screenshot or photo of the receipt so our team can confirm it.</p>
 
-      <div className="ngf-proof-grid">
-        <div className="ngf-proof-field">
+      <div className="tgf-proof-grid">
+        <div className="tgf-proof-field">
           <label htmlFor={fieldId('methodId')}>Account you paid to</label>
           <select
             id={fieldId('methodId')}
@@ -143,7 +143,7 @@ export const PaymentProofForm: React.FC<PaymentProofFormProps> = ({ trackingNumb
           {errorText('methodId')}
         </div>
 
-        <div className="ngf-proof-field">
+        <div className="tgf-proof-field">
           <label htmlFor={fieldId('payerName')}>Your name</label>
           <input
             id={fieldId('payerName')}
@@ -155,13 +155,13 @@ export const PaymentProofForm: React.FC<PaymentProofFormProps> = ({ trackingNumb
             aria-invalid={!!errors.payerName}
             aria-describedby={describedBy('payerName', `${id}-payerName-hint`)}
           />
-          <p id={`${id}-payerName-hint`} className="ngf-proof-hint">The name the payment was sent from</p>
+          <p id={`${id}-payerName-hint`} className="tgf-proof-hint">The name the payment was sent from</p>
           {errorText('payerName')}
         </div>
 
-        <div className="ngf-proof-field">
+        <div className="tgf-proof-field">
           <label htmlFor={fieldId('amountSent')}>Amount sent</label>
-          <div className="ngf-proof-amount">
+          <div className="tgf-proof-amount">
             <input
               id={fieldId('amountSent')}
               type="number"
@@ -178,7 +178,7 @@ export const PaymentProofForm: React.FC<PaymentProofFormProps> = ({ trackingNumb
           {errorText('amountSent')}
         </div>
 
-        <div className="ngf-proof-field">
+        <div className="tgf-proof-field">
           <label htmlFor={fieldId('reference')}>Payment reference (optional)</label>
           <input
             id={fieldId('reference')}
@@ -189,48 +189,48 @@ export const PaymentProofForm: React.FC<PaymentProofFormProps> = ({ trackingNumb
             aria-invalid={!!errors.reference}
             aria-describedby={describedBy('reference', `${id}-reference-hint`)}
           />
-          <p id={`${id}-reference-hint`} className="ngf-proof-hint">Transaction ID, MTCN or reference number</p>
+          <p id={`${id}-reference-hint`} className="tgf-proof-hint">Transaction ID, MTCN or reference number</p>
           {errorText('reference')}
         </div>
       </div>
 
-      <div className="ngf-proof-field ngf-proof-image">
-        <span className="ngf-proof-label" id={`${id}-image-label`}>Screenshot of the payment</span>
-        <p id={`${id}-image-hint`} className="ngf-proof-hint">JPG, PNG, WebP or HEIC. Only our team can see it.</p>
+      <div className="tgf-proof-field tgf-proof-image">
+        <span className="tgf-proof-label" id={`${id}-image-label`}>Screenshot of the payment</span>
+        <p id={`${id}-image-hint`} className="tgf-proof-hint">JPG, PNG, WebP or HEIC. Only our team can see it.</p>
         <input
           ref={fileInput}
           id={fieldId('image')}
           type="file"
           accept="image/*,.heic,.heif"
-          className="ngf-sr-only"
+          className="tgf-sr-only"
           tabIndex={-1}
           aria-hidden="true"
           onChange={(e) => chooseFile(e.target.files?.[0])}
         />
-        {image && <img className="ngf-proof-preview" src={image.dataUrl} alt="Your payment screenshot" />}
-        <div className="ngf-proof-image-actions">
+        {image && <img className="tgf-proof-preview" src={image.dataUrl} alt="Your payment screenshot" />}
+        <div className="tgf-proof-image-actions">
           <button
             id={`${id}-image-button`}
             type="button"
-            className="ngf-proof-secondary"
+            className="tgf-proof-secondary"
             onClick={() => fileInput.current?.click()}
             disabled={preparing}
             aria-describedby={describedBy('image', `${id}-image-label ${id}-image-hint`)}
           >
-            {preparing ? <Loader2 size={15} className="ngf-proof-spin" aria-hidden="true" /> : <ImagePlus size={15} aria-hidden="true" />}
+            {preparing ? <Loader2 size={15} className="tgf-proof-spin" aria-hidden="true" /> : <ImagePlus size={15} aria-hidden="true" />}
             <span>{image ? 'Change image' : 'Choose image'}</span>
           </button>
           {image && (
-            <button type="button" className="ngf-proof-link" onClick={() => setImage(null)}>Remove image</button>
+            <button type="button" className="tgf-proof-link" onClick={() => setImage(null)}>Remove image</button>
           )}
         </div>
         {errorText('image')}
       </div>
 
-      {formError && <p className="ngf-proof-form-error" role="alert">{formError}</p>}
+      {formError && <p className="tgf-proof-form-error" role="alert">{formError}</p>}
 
-      <button type="submit" className="ngf-btn-primary ngf-proof-submit" disabled={sending || preparing}>
-        {sending && <Loader2 size={16} className="ngf-proof-spin" aria-hidden="true" />}
+      <button type="submit" className="tgf-btn-primary tgf-proof-submit" disabled={sending || preparing}>
+        {sending && <Loader2 size={16} className="tgf-proof-spin" aria-hidden="true" />}
         <span>{sending ? 'Sending…' : 'Send proof'}</span>
       </button>
     </form>

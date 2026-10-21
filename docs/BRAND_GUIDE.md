@@ -59,26 +59,26 @@ The palette follows the logo: black lettering with a red globe, arrow and "FREIG
 ```css
 :root {
   /* Brand */
-  --ngf-primary-50 … --ngf-primary-900;   /* graphite */
-  --ngf-accent-50  … --ngf-accent-900;    /* brand red */
-  --ngf-ink-950, --ngf-ink-900, --ngf-ink-800, --ngf-ink-700;  /* deep surfaces */
+  --tgf-primary-50 … --tgf-primary-900;   /* graphite */
+  --tgf-accent-50  … --tgf-accent-900;    /* brand red */
+  --tgf-ink-950, --tgf-ink-900, --tgf-ink-800, --tgf-ink-700;  /* deep surfaces */
 
   /* Semantic (keep: shipment status colours must stay universally readable) */
-  --ngf-success-*  (green)   /* Delivered */
-  --ngf-warning-*  (amber)   /* Delayed / Exception pending */
-  --ngf-danger-*   (red)     /* Exception / Held */
-  --ngf-info-*     (blue)    /* In transit */
+  --tgf-success-*  (green)   /* Delivered */
+  --tgf-warning-*  (amber)   /* Delayed / Exception pending */
+  --tgf-danger-*   (red)     /* Exception / Held */
+  --tgf-info-*     (blue)    /* In transit */
 
   /* Neutrals */
-  --ngf-slate-50 … --ngf-slate-900, --ngf-white;
+  --tgf-slate-50 … --tgf-slate-900, --tgf-white;
 
   /* Role aliases, which components should use */
-  --ngf-color-bg, --ngf-color-surface, --ngf-color-text, --ngf-color-muted,
-  --ngf-color-brand, --ngf-color-brand-contrast, --ngf-color-accent, --ngf-color-border, --ngf-color-focus;
+  --tgf-color-bg, --tgf-color-surface, --tgf-color-text, --tgf-color-muted,
+  --tgf-color-brand, --tgf-color-brand-contrast, --tgf-color-accent, --tgf-color-border, --tgf-color-focus;
 }
 ```
 
-Component classes use the `ngf-` prefix (e.g. `.ngf-nav-link`, `.ngf-timeline-card`).
+Component classes use the `tgf-` prefix (e.g. `.tgf-nav-link`, `.tgf-timeline-card`).
 
 ### 4.2 Palette
 

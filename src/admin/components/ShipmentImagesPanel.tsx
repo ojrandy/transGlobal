@@ -206,17 +206,17 @@ export const ShipmentImagesPanel: React.FC<ShipmentImagesPanelProps> = ({ tracki
   const readyCount = pending.filter((p) => !p.busy).length;
 
   return (
-    <section className="ngf-images-panel" aria-labelledby={`ngf-images-${trackingNumber}`}>
-      <div className="ngf-images-head">
-        <h4 id={`ngf-images-${trackingNumber}`}>Package images</h4>
-        <span className="ngf-images-count">{images.length} / {MAX_IMAGES}</span>
+    <section className="tgf-images-panel" aria-labelledby={`tgf-images-${trackingNumber}`}>
+      <div className="tgf-images-head">
+        <h4 id={`tgf-images-${trackingNumber}`}>Package images</h4>
+        <span className="tgf-images-count">{images.length} / {MAX_IMAGES}</span>
       </div>
-      <p className="ngf-images-hint">
+      <p className="tgf-images-hint">
         Saved as soon as you upload or change them. Visible images appear on the public track page with their caption.
       </p>
 
       <div
-        className={`ngf-images-drop${dragOver ? ' is-over' : ''}${total >= MAX_IMAGES ? ' is-full' : ''}`}
+        className={`tgf-images-drop${dragOver ? ' is-over' : ''}${total >= MAX_IMAGES ? ' is-full' : ''}`}
         onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
         onDragLeave={() => setDragOver(false)}
         onDrop={(e) => {
@@ -227,10 +227,10 @@ export const ShipmentImagesPanel: React.FC<ShipmentImagesPanelProps> = ({ tracki
       >
         <ImagePlus size={20} aria-hidden="true" />
         <span>Drag photos here, or</span>
-        <button type="button" className="ngf-images-btn" onClick={() => fileInputRef.current?.click()} disabled={total >= MAX_IMAGES}>
+        <button type="button" className="tgf-images-btn" onClick={() => fileInputRef.current?.click()} disabled={total >= MAX_IMAGES}>
           Choose files
         </button>
-        <span className="ngf-images-drop-note">JPG, PNG, WebP or HEIC. Resized to 1600px; location data removed.</span>
+        <span className="tgf-images-drop-note">JPG, PNG, WebP or HEIC. Resized to 1600px; location data removed.</span>
         <input
           ref={fileInputRef}
           type="file"
@@ -245,12 +245,12 @@ export const ShipmentImagesPanel: React.FC<ShipmentImagesPanelProps> = ({ tracki
       </div>
 
       {pending.length > 0 && (
-        <div className="ngf-images-pending">
+        <div className="tgf-images-pending">
           {pending.map((p) => (
-            <div className="ngf-images-pending-row" key={p.key}>
+            <div className="tgf-images-pending-row" key={p.key}>
               <img src={p.previewUrl} alt="" width={64} height={64} />
-              <div className="ngf-images-pending-fields">
-                <label className="ngf-images-label" htmlFor={`cap-${p.key}`}>Caption (required)</label>
+              <div className="tgf-images-pending-fields">
+                <label className="tgf-images-label" htmlFor={`cap-${p.key}`}>Caption (required)</label>
                 <input
                   id={`cap-${p.key}`}
                   type="text"
@@ -262,25 +262,25 @@ export const ShipmentImagesPanel: React.FC<ShipmentImagesPanelProps> = ({ tracki
                   disabled={p.busy}
                   aria-invalid={!!p.error}
                 />
-                <label className="ngf-images-check">
+                <label className="tgf-images-check">
                   <input type="checkbox" checked={p.isPublic} onChange={(e) => updatePending(p.key, { isPublic: e.target.checked })} disabled={p.busy} />
                   <span>Show on the track page</span>
                 </label>
-                {p.error && <p className="ngf-images-error">{p.error}</p>}
+                {p.error && <p className="tgf-images-error">{p.error}</p>}
               </div>
-              <div className="ngf-images-pending-actions">
-                <button type="button" className="ngf-images-btn primary" onClick={() => uploadOne(p)} disabled={p.busy}>
-                  {p.busy ? <Loader2 size={14} className="ngf-images-spin" aria-hidden="true" /> : <Upload size={14} aria-hidden="true" />}
+              <div className="tgf-images-pending-actions">
+                <button type="button" className="tgf-images-btn primary" onClick={() => uploadOne(p)} disabled={p.busy}>
+                  {p.busy ? <Loader2 size={14} className="tgf-images-spin" aria-hidden="true" /> : <Upload size={14} aria-hidden="true" />}
                   <span>{p.busy ? 'Uploading…' : 'Upload'}</span>
                 </button>
-                <button type="button" className="ngf-images-icon-btn" onClick={() => removePending(p.key)} disabled={p.busy} aria-label="Remove this file">
+                <button type="button" className="tgf-images-icon-btn" onClick={() => removePending(p.key)} disabled={p.busy} aria-label="Remove this file">
                   <X size={14} aria-hidden="true" />
                 </button>
               </div>
             </div>
           ))}
           {readyCount > 1 && (
-            <button type="button" className="ngf-images-btn primary ngf-images-upload-all" onClick={uploadAll}>
+            <button type="button" className="tgf-images-btn primary tgf-images-upload-all" onClick={uploadAll}>
               <Upload size={14} aria-hidden="true" />
               <span>Upload all ({readyCount})</span>
             </button>
@@ -288,26 +288,26 @@ export const ShipmentImagesPanel: React.FC<ShipmentImagesPanelProps> = ({ tracki
         </div>
       )}
 
-      <p className={`ngf-images-status${message?.error ? ' is-error' : ''}`} role="status" aria-live="polite">
+      <p className={`tgf-images-status${message?.error ? ' is-error' : ''}`} role="status" aria-live="polite">
         {message?.text}
       </p>
 
       {loading ? (
-        <p className="ngf-images-empty">Loading images…</p>
+        <p className="tgf-images-empty">Loading images…</p>
       ) : loadError ? (
-        <div className="ngf-load-error" role="alert">
-          <p className="ngf-images-error">{loadError}</p>
-          <button type="button" className="ngf-load-retry" onClick={() => setReloadKey((k) => k + 1)}>Try again</button>
+        <div className="tgf-load-error" role="alert">
+          <p className="tgf-images-error">{loadError}</p>
+          <button type="button" className="tgf-load-retry" onClick={() => setReloadKey((k) => k + 1)}>Try again</button>
         </div>
       ) : images.length === 0 ? (
-        <p className="ngf-images-empty">No images yet.</p>
+        <p className="tgf-images-empty">No images yet.</p>
       ) : (
-        <ul className="ngf-images-grid">
+        <ul className="tgf-images-grid">
           {images.map((image, index) => {
             const busy = busyId === image.id;
             return (
-              <li key={image.id} className={`ngf-images-card${image.isPublic ? '' : ' is-hidden'}`}>
-                <div className="ngf-images-thumb">
+              <li key={image.id} className={`tgf-images-card${image.isPublic ? '' : ' is-hidden'}`}>
+                <div className="tgf-images-thumb">
                   <img
                     src={image.adminUrl}
                     alt={image.caption}
@@ -315,9 +315,9 @@ export const ShipmentImagesPanel: React.FC<ShipmentImagesPanelProps> = ({ tracki
                     height={image.height ?? 120}
                     loading="lazy"
                   />
-                  {!image.isPublic && <span className="ngf-images-badge">Hidden</span>}
+                  {!image.isPublic && <span className="tgf-images-badge">Hidden</span>}
                 </div>
-                <label className="ngf-images-label" htmlFor={`cap-${image.id}`}>Caption</label>
+                <label className="tgf-images-label" htmlFor={`cap-${image.id}`}>Caption</label>
                 <input
                   id={`cap-${image.id}`}
                   type="text"
@@ -328,22 +328,22 @@ export const ShipmentImagesPanel: React.FC<ShipmentImagesPanelProps> = ({ tracki
                   onKeyDown={(e) => stopEnter(e, () => (e.target as HTMLInputElement).blur())}
                   disabled={busy}
                 />
-                <div className="ngf-images-card-actions">
-                  <button type="button" className="ngf-images-icon-btn" onClick={() => toggleVisibility(image)} disabled={busy}
+                <div className="tgf-images-card-actions">
+                  <button type="button" className="tgf-images-icon-btn" onClick={() => toggleVisibility(image)} disabled={busy}
                     aria-label={image.isPublic ? `Hide “${image.caption}” from the track page` : `Show “${image.caption}” on the track page`}
                     title={image.isPublic ? 'Visible on the track page' : 'Hidden from the track page'}>
                     {image.isPublic ? <Eye size={14} aria-hidden="true" /> : <EyeOff size={14} aria-hidden="true" />}
                   </button>
-                  <button type="button" className="ngf-images-icon-btn" onClick={() => move(index, -1)} disabled={busy || index === 0} aria-label={`Move “${image.caption}” earlier`}>
+                  <button type="button" className="tgf-images-icon-btn" onClick={() => move(index, -1)} disabled={busy || index === 0} aria-label={`Move “${image.caption}” earlier`}>
                     <ArrowUp size={14} aria-hidden="true" />
                   </button>
-                  <button type="button" className="ngf-images-icon-btn" onClick={() => move(index, 1)} disabled={busy || index === images.length - 1} aria-label={`Move “${image.caption}” later`}>
+                  <button type="button" className="tgf-images-icon-btn" onClick={() => move(index, 1)} disabled={busy || index === images.length - 1} aria-label={`Move “${image.caption}” later`}>
                     <ArrowDown size={14} aria-hidden="true" />
                   </button>
-                  <button type="button" className="ngf-images-icon-btn danger" onClick={() => remove(image)} disabled={busy} aria-label={`Delete “${image.caption}”`}>
+                  <button type="button" className="tgf-images-icon-btn danger" onClick={() => remove(image)} disabled={busy} aria-label={`Delete “${image.caption}”`}>
                     <Trash2 size={14} aria-hidden="true" />
                   </button>
-                  {busy && <Loader2 size={14} className="ngf-images-spin" aria-hidden="true" />}
+                  {busy && <Loader2 size={14} className="tgf-images-spin" aria-hidden="true" />}
                 </div>
               </li>
             );
@@ -352,16 +352,16 @@ export const ShipmentImagesPanel: React.FC<ShipmentImagesPanelProps> = ({ tracki
       )}
 
       {legacy.length > 0 && (
-        <div className="ngf-images-legacy">
+        <div className="tgf-images-legacy">
           <h5>Earlier photos (read-only)</h5>
-          <p className="ngf-images-hint">Saved on this shipment before captions existed. They also show on the track page.</p>
-          <ul className="ngf-images-grid">
+          <p className="tgf-images-hint">Saved on this shipment before captions existed. They also show on the track page.</p>
+          <ul className="tgf-images-grid">
             {legacy.map((url, i) => (
-              <li key={`${i}-${url.slice(0, 80)}`} className="ngf-images-card">
-                <div className="ngf-images-thumb">
+              <li key={`${i}-${url.slice(0, 80)}`} className="tgf-images-card">
+                <div className="tgf-images-thumb">
                   <img src={url} alt={`Shipment photo ${i + 1}`} width={160} height={120} loading="lazy" />
                 </div>
-                <p className="ngf-images-legacy-label">Shipment photo {i + 1}</p>
+                <p className="tgf-images-legacy-label">Shipment photo {i + 1}</p>
               </li>
             ))}
           </ul>

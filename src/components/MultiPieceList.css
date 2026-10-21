@@ -1,43 +1,43 @@
-.ngf-pieces-card {
-  background: var(--ngf-white);
-  border: 1px solid var(--ngf-slate-200);
-  border-radius: var(--ngf-radius-lg);
+.tgf-pieces-card {
+  background: var(--tgf-white);
+  border: 1px solid var(--tgf-slate-200);
+  border-radius: var(--tgf-radius-lg);
   padding: 1.25rem 1.5rem;
-  box-shadow: var(--ngf-shadow-card);
+  box-shadow: var(--tgf-shadow-card);
 }
 
-.ngf-pieces-header {
+.tgf-pieces-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.25rem;
 }
 
-.ngf-pieces-title {
+.tgf-pieces-title {
   font-size: 1.0625rem;
   font-weight: 700;
-  color: var(--ngf-ink-900);
+  color: var(--tgf-ink-900);
 }
 
-.ngf-pieces-count-badge {
-  background-color: var(--ngf-primary-50);
-  color: var(--ngf-primary-900);
+.tgf-pieces-count-badge {
+  background-color: var(--tgf-primary-50);
+  color: var(--tgf-primary-900);
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.25rem 0.625rem;
-  border-radius: var(--ngf-radius-full);
+  border-radius: var(--tgf-radius-full);
 }
 
-.ngf-pieces-grid {
+.tgf-pieces-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 
-.ngf-piece-item {
-  background: var(--ngf-slate-50);
-  border: 1px solid var(--ngf-slate-200);
-  border-radius: var(--ngf-radius-md);
+.tgf-piece-item {
+  background: var(--tgf-slate-50);
+  border: 1px solid var(--tgf-slate-200);
+  border-radius: var(--tgf-radius-md);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -58,13 +58,13 @@
 .piece-label {
   font-size: 0.8125rem;
   font-weight: 700;
-  color: var(--ngf-ink-900);
+  color: var(--tgf-ink-900);
 }
 
 .piece-tracking-id {
-  font-family: var(--ngf-font-mono);
+  font-family: var(--tgf-font-mono);
   font-size: 0.75rem;
-  color: var(--ngf-slate-600);
+  color: var(--tgf-slate-600);
 }
 
 .piece-status-wrap {
@@ -74,24 +74,24 @@
   gap: 0.125rem;
 }
 
-.ngf-badge-in-transit-sm {
-  background-color: var(--ngf-info-100);
-  color: var(--ngf-info-700);
+.tgf-badge-in-transit-sm {
+  background-color: var(--tgf-info-100);
+  color: var(--tgf-info-700);
   font-size: 0.6875rem;
   font-weight: 700;
   padding: 0.125rem 0.5rem;
-  border-radius: var(--ngf-radius-sm);
+  border-radius: var(--tgf-radius-sm);
 }
 
 .piece-location {
   font-size: 0.75rem;
-  color: var(--ngf-slate-500);
+  color: var(--tgf-slate-500);
 }
 
 .piece-barcode-wrap {
-  background: var(--ngf-white);
-  border: 1px solid var(--ngf-slate-200);
-  border-radius: var(--ngf-radius-sm);
+  background: var(--tgf-white);
+  border: 1px solid var(--tgf-slate-200);
+  border-radius: var(--tgf-radius-sm);
   padding: 0.5rem;
   display: flex;
   align-items: center;
@@ -104,16 +104,16 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.75rem;
-  color: var(--ngf-slate-600);
+  color: var(--tgf-slate-600);
   font-weight: 500;
 }
 
 .spec-dot {
-  color: var(--ngf-slate-400);
+  color: var(--tgf-slate-400);
 }
 
 @media (max-width: 768px) {
-  .ngf-pieces-grid {
+  .tgf-pieces-grid {
     grid-template-columns: 1fr;
   }
 }

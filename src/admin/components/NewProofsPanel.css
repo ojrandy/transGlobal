@@ -1,22 +1,22 @@
 /* "New payment proofs" card on the Operations Center (update G.2). Layout from OperationsCenter.css. */
 
-.ngf-new-proofs .ops-table-header-block {
+.tgf-new-proofs .ops-table-header-block {
   flex-wrap: wrap;
 }
 
-.ngf-new-proofs h2:focus {
+.tgf-new-proofs h2:focus {
   outline: none;
 }
 
-.ngf-new-proofs h2:focus-visible {
-  outline: 2px solid var(--ngf-color-focus);
+.tgf-new-proofs h2:focus-visible {
+  outline: 2px solid var(--tgf-color-focus);
   outline-offset: 2px;
 }
 
-.ngf-new-proofs .new-proofs-pill-active {
-  background: var(--ngf-info-50);
-  border-color: var(--ngf-info-50);
-  color: var(--ngf-info-700);
+.tgf-new-proofs .new-proofs-pill-active {
+  background: var(--tgf-info-50);
+  border-color: var(--tgf-info-50);
+  color: var(--tgf-info-700);
 }
 
 .new-proofs-head-actions {
@@ -31,10 +31,10 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--ngf-slate-200);
-  border-radius: var(--ngf-radius-md);
-  background: var(--ngf-white);
-  color: var(--ngf-slate-600);
+  border: 1px solid var(--tgf-slate-200);
+  border-radius: var(--tgf-radius-md);
+  background: var(--tgf-white);
+  color: var(--tgf-slate-600);
   cursor: pointer;
 }
 
@@ -57,10 +57,10 @@
   gap: 0.5rem;
   margin: 1rem 1.25rem;
   padding: 0.75rem 1rem;
-  background: var(--ngf-danger-50);
-  color: var(--ngf-danger-600);
-  border: 1px solid var(--ngf-danger-100);
-  border-radius: var(--ngf-radius-md);
+  background: var(--tgf-danger-50);
+  color: var(--tgf-danger-600);
+  border: 1px solid var(--tgf-danger-100);
+  border-radius: var(--tgf-radius-md);
   font-size: 0.875rem;
 }
 
@@ -69,19 +69,19 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1.1rem 1.25rem;
-  color: var(--ngf-success-500);
+  color: var(--tgf-success-500);
 }
 
 .new-proofs-empty strong {
   display: block;
   font-size: 0.875rem;
-  color: var(--ngf-slate-800);
+  color: var(--tgf-slate-800);
 }
 
 .new-proofs-empty p {
   margin: 0.1rem 0 0;
   font-size: 0.8125rem;
-  color: var(--ngf-slate-500);
+  color: var(--tgf-slate-500);
 }
 
 .new-proofs-list {
@@ -98,10 +98,10 @@
   gap: 0.75rem;
   min-width: 0;
   padding: 0.75rem;
-  border: 1px solid var(--ngf-slate-200);
-  border-left: 4px solid var(--ngf-info-500);
-  border-radius: var(--ngf-radius-md);
-  background: var(--ngf-white);
+  border: 1px solid var(--tgf-slate-200);
+  border-left: 4px solid var(--tgf-info-500);
+  border-radius: var(--tgf-radius-md);
+  background: var(--tgf-white);
 }
 
 .new-proof-thumb {
@@ -110,9 +110,9 @@
   width: 72px;
   height: 72px;
   padding: 0;
-  border: 1px solid var(--ngf-slate-200);
-  border-radius: var(--ngf-radius-md);
-  background: var(--ngf-slate-100);
+  border: 1px solid var(--tgf-slate-200);
+  border-radius: var(--tgf-radius-md);
+  background: var(--tgf-slate-100);
   overflow: hidden;
   cursor: zoom-in;
 }
@@ -127,7 +127,7 @@
 .new-proof-thumb:focus-visible,
 .new-proofs-icon-btn:focus-visible,
 .new-proofs-more:focus-visible {
-  outline: 2px solid var(--ngf-color-focus);
+  outline: 2px solid var(--tgf-color-focus);
   outline-offset: 2px;
 }
 
@@ -139,7 +139,7 @@
   padding: 3px;
   border-radius: 5px;
   background: rgba(15, 23, 42, 0.7);
-  color: var(--ngf-white);
+  color: var(--tgf-white);
 }
 
 .new-proof-info {
@@ -160,12 +160,12 @@
 
 .new-proof-top strong {
   font-size: 0.9rem;
-  color: var(--ngf-slate-900);
+  color: var(--tgf-slate-900);
 }
 
 .new-proof-top small {
   font-size: 0.72rem;
-  color: var(--ngf-slate-500);
+  color: var(--tgf-slate-500);
 }
 
 .new-proof-amounts,
@@ -174,23 +174,23 @@
   flex-wrap: wrap;
   gap: 0.15rem 0.75rem;
   font-size: 0.78rem;
-  color: var(--ngf-slate-600);
+  color: var(--tgf-slate-600);
   min-width: 0;
 }
 
 .new-proof-amounts b {
-  color: var(--ngf-slate-900);
+  color: var(--tgf-slate-900);
 }
 
 .new-proof-mismatch {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  color: var(--ngf-warning-700);
+  color: var(--tgf-warning-700);
 }
 
 .new-proof-mismatch b {
-  color: var(--ngf-warning-700);
+  color: var(--tgf-warning-700);
 }
 
 .new-proof-mismatch em {
@@ -204,7 +204,7 @@
   align-items: center;
   gap: 0.3rem;
   min-width: 0;
-  color: var(--ngf-slate-800);
+  color: var(--tgf-slate-800);
   font-weight: 600;
 }
 
@@ -222,7 +222,7 @@
   padding: 0;
   border: 0;
   background: none;
-  color: var(--ngf-info-700);
+  color: var(--tgf-info-700);
   font-size: 0.8125rem;
   font-weight: 700;
   cursor: pointer;
@@ -232,7 +232,7 @@
   margin: 0.6rem 0 0;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--ngf-success-700);
+  color: var(--tgf-success-700);
 }
 
 @media (prefers-reduced-motion: reduce) {

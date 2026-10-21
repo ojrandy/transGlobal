@@ -7,11 +7,11 @@
 }
 
 html {
-  font-family: var(--ngf-font-sans);
+  font-family: var(--tgf-font-sans);
   font-size: 16px;
   line-height: 1.5;
-  color: var(--ngf-slate-800);
-  background-color: var(--ngf-slate-50);
+  color: var(--tgf-slate-800);
+  background-color: var(--tgf-slate-50);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
@@ -46,26 +46,26 @@ button {
    clicks. :where() keeps specificity at zero, so a component's own focus style still wins. The
    brand red is 5.5:1 on white and 3.2:1 on Ink, above the 3:1 minimum for focus indicators. */
 :where(a, button, [role="button"], [tabindex], summary, select, input, textarea):focus-visible {
-  outline: 2px solid var(--ngf-color-focus);
+  outline: 2px solid var(--tgf-color-focus);
   outline-offset: 2px;
 }
 
 /* "Skip to main content": hidden until focused by the first Tab press (Header.tsx). */
-.ngf-skip-link {
+.tgf-skip-link {
   position: fixed;
   top: 0.75rem;
   left: 0.75rem;
   z-index: 10000;
   padding: 0.75rem 1.25rem;
-  border-radius: var(--ngf-radius-md);
-  background: var(--ngf-ink-950);
-  color: var(--ngf-white);
+  border-radius: var(--tgf-radius-md);
+  background: var(--tgf-ink-950);
+  color: var(--tgf-white);
   font-weight: 600;
   font-size: 0.9375rem;
   transform: translateY(-200%);
 }
 
-.ngf-skip-link:focus {
+.tgf-skip-link:focus {
   transform: translateY(0);
 }
 
@@ -98,18 +98,18 @@ img, svg {
 }
 
 /* Layout Utilities */
-.ngf-container {
+.tgf-container {
   width: 100%;
-  max-width: var(--ngf-container-max);
+  max-width: var(--tgf-container-max);
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-.ngf-container-wide {
+.tgf-container-wide {
   width: 100%;
-  max-width: var(--ngf-container-wide);
+  max-width: var(--tgf-container-wide);
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.5rem;
@@ -118,18 +118,18 @@ img, svg {
 
 /* Typography Utilities */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--ngf-font-display);
+  font-family: var(--tgf-font-display);
   font-weight: 700;
   line-height: 1.2;
-  color: var(--ngf-ink-900);
+  color: var(--tgf-ink-900);
 }
 
-.ngf-badge {
+.tgf-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
   padding: 0.25rem 0.75rem;
-  border-radius: var(--ngf-radius-full);
+  border-radius: var(--tgf-radius-full);
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -137,87 +137,87 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Status badges use semantic colours only (BRAND_GUIDE §4.1): in transit = info, delivered = success. */
-.ngf-badge-in-transit {
-  background-color: var(--ngf-info-100);
-  color: var(--ngf-info-700);
+.tgf-badge-in-transit {
+  background-color: var(--tgf-info-100);
+  color: var(--tgf-info-700);
   border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
-.ngf-badge-delivered {
-  background-color: var(--ngf-success-100);
-  color: var(--ngf-success-700);
+.tgf-badge-delivered {
+  background-color: var(--tgf-success-100);
+  color: var(--tgf-success-700);
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
-.ngf-badge-delayed {
-  background-color: var(--ngf-warning-100);
-  color: var(--ngf-warning-600);
+.tgf-badge-delayed {
+  background-color: var(--tgf-warning-100);
+  color: var(--tgf-warning-600);
   border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
-.ngf-badge-exception {
-  background-color: var(--ngf-danger-100);
-  color: var(--ngf-danger-600);
+.tgf-badge-exception {
+  background-color: var(--tgf-danger-100);
+  color: var(--tgf-danger-600);
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
 /* Button Variants */
-.ngf-btn-primary {
+.tgf-btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: var(--ngf-primary-900);
-  color: var(--ngf-white);
+  background-color: var(--tgf-primary-900);
+  color: var(--tgf-white);
   padding: 0.75rem 1.375rem;
-  border-radius: var(--ngf-radius-md);
+  border-radius: var(--tgf-radius-md);
   font-weight: 600;
   font-size: 0.9375rem;
-  transition: var(--ngf-transition);
-  box-shadow: 0 2px 4px rgba(var(--ngf-primary-rgb), 0.2);
+  transition: var(--tgf-transition);
+  box-shadow: 0 2px 4px rgba(var(--tgf-primary-rgb), 0.2);
 }
 
-.ngf-btn-primary:hover {
-  background-color: var(--ngf-primary-800);
+.tgf-btn-primary:hover {
+  background-color: var(--tgf-primary-800);
   transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(var(--ngf-primary-rgb), 0.3);
+  box-shadow: 0 4px 10px rgba(var(--tgf-primary-rgb), 0.3);
 }
 
-.ngf-btn-secondary {
+.tgf-btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: var(--ngf-white);
-  color: var(--ngf-ink-900);
-  border: 1px solid var(--ngf-slate-300);
+  background-color: var(--tgf-white);
+  color: var(--tgf-ink-900);
+  border: 1px solid var(--tgf-slate-300);
   padding: 0.75rem 1.375rem;
-  border-radius: var(--ngf-radius-md);
+  border-radius: var(--tgf-radius-md);
   font-weight: 600;
   font-size: 0.9375rem;
-  transition: var(--ngf-transition);
+  transition: var(--tgf-transition);
 }
 
-.ngf-btn-secondary:hover {
-  background-color: var(--ngf-slate-100);
-  border-color: var(--ngf-slate-400);
+.tgf-btn-secondary:hover {
+  background-color: var(--tgf-slate-100);
+  border-color: var(--tgf-slate-400);
 }
 
-.ngf-btn-dark {
+.tgf-btn-dark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: var(--ngf-ink-900);
-  color: var(--ngf-white);
+  background-color: var(--tgf-ink-900);
+  color: var(--tgf-white);
   padding: 0.75rem 1.375rem;
-  border-radius: var(--ngf-radius-md);
+  border-radius: var(--tgf-radius-md);
   font-weight: 600;
   font-size: 0.9375rem;
-  transition: var(--ngf-transition);
+  transition: var(--tgf-transition);
 }
 
-.ngf-btn-dark:hover {
-  background-color: var(--ngf-ink-950);
+.tgf-btn-dark:hover {
+  background-color: var(--tgf-ink-950);
   transform: translateY(-1px);
 }

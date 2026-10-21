@@ -3,33 +3,33 @@
    Zero Clutter · Hidden Mobile Topbar · Slide-in Drawer
    ============================================================ */
 
-.ngf-header-wrapper {
+.tgf-header-wrapper {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: var(--ngf-white);
+  background-color: var(--tgf-white);
   box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.08);
 }
 
 /* ============================================================
    1. TOP UTILITY BAR (Desktop Only - Clean Corporate Strip)
    ============================================================ */
-.ngf-topbar {
-  background-color: var(--ngf-ink-950);
+.tgf-topbar {
+  background-color: var(--tgf-ink-950);
   color: #94a3b8;
   font-size: 0.75rem;
   font-weight: 500;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.ngf-topbar-inner {
+.tgf-topbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 38px;
 }
 
-.ngf-topbar-left {
+.tgf-topbar-left {
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -42,7 +42,7 @@
 }
 
 .topbar-item strong {
-  color: var(--ngf-white);
+  color: var(--tgf-white);
   font-weight: 600;
 }
 
@@ -59,11 +59,11 @@
 }
 
 .topbar-link:hover {
-  color: var(--ngf-white);
+  color: var(--tgf-white);
 }
 
 .text-accent {
-  color: var(--ngf-accent-500);
+  color: var(--tgf-accent-500);
 }
 
 .text-emerald {
@@ -73,12 +73,12 @@
 /* ============================================================
    2. MAIN NAVIGATION BAR (White Surface)
    ============================================================ */
-.ngf-main-header {
-  background-color: var(--ngf-white);
-  border-bottom: 1px solid var(--ngf-slate-200);
+.tgf-main-header {
+  background-color: var(--tgf-white);
+  border-bottom: 1px solid var(--tgf-slate-200);
 }
 
-.ngf-header-inner {
+.tgf-header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -86,7 +86,7 @@
 }
 
 /* Brand Logo */
-.ngf-logo-wrap {
+.tgf-logo-wrap {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -94,7 +94,7 @@
   user-select: none;
 }
 
-.ngf-brand-logo-img {
+.tgf-brand-logo-img {
   height: 68px;
   width: auto;
   max-width: 250px;
@@ -103,124 +103,124 @@
   transition: transform 0.2s ease;
 }
 
-.ngf-logo-wrap:hover .ngf-brand-logo-img {
+.tgf-logo-wrap:hover .tgf-brand-logo-img {
   transform: scale(1.02);
 }
 
-.ngf-fallback-logo {
-  font-family: var(--ngf-font-display);
+.tgf-fallback-logo {
+  font-family: var(--tgf-font-display);
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--ngf-ink-900);
+  color: var(--tgf-ink-900);
   letter-spacing: -0.02em;
 }
 
-.ngf-fallback-logo .text-accent {
-  color: var(--ngf-accent-500);
+.tgf-fallback-logo .text-accent {
+  color: var(--tgf-accent-500);
   margin-left: 0.15rem;
 }
 
 /* Desktop Nav Links */
-.ngf-nav-links {
+.tgf-nav-links {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-.ngf-nav-link {
+.tgf-nav-link {
   font-size: 0.9375rem;
   font-weight: 700;
-  color: var(--ngf-slate-700);
+  color: var(--tgf-slate-700);
   background: transparent;
   border: none;
   padding: 0.5rem 0.25rem;
   position: relative;
   cursor: pointer;
-  transition: var(--ngf-transition);
+  transition: var(--tgf-transition);
 }
 
-.ngf-nav-link:hover {
-  color: var(--ngf-accent-500);
+.tgf-nav-link:hover {
+  color: var(--tgf-accent-500);
 }
 
-.ngf-nav-link.active {
-  color: var(--ngf-accent-500);
+.tgf-nav-link.active {
+  color: var(--tgf-accent-500);
 }
 
-.ngf-nav-link.active::after {
+.tgf-nav-link.active::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 2px;
-  background-color: var(--ngf-accent-500);
+  background-color: var(--tgf-accent-500);
   border-radius: 2px;
 }
 
 /* Primary Top Action Button */
-.ngf-header-actions {
+.tgf-header-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.ngf-btn-top-quote {
+.tgf-btn-top-quote {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, var(--ngf-accent-500) 0%, var(--ngf-accent-500) 100%);
-  color: var(--ngf-white);
+  background: linear-gradient(135deg, var(--tgf-accent-500) 0%, var(--tgf-accent-500) 100%);
+  color: var(--tgf-white);
   padding: 0.6875rem 1.25rem;
-  border-radius: var(--ngf-radius-md);
+  border-radius: var(--tgf-radius-md);
   font-size: 0.875rem;
   font-weight: 700;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(var(--ngf-accent-rgb), 0.25);
-  transition: var(--ngf-transition);
+  box-shadow: 0 4px 12px rgba(var(--tgf-accent-rgb), 0.25);
+  transition: var(--tgf-transition);
 }
 
-.ngf-btn-top-quote:hover {
+.tgf-btn-top-quote:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(var(--ngf-accent-rgb), 0.35);
+  box-shadow: 0 6px 16px rgba(var(--tgf-accent-rgb), 0.35);
   filter: brightness(1.05);
 }
 
 /* Mobile Hamburger Toggle Button */
-.ngf-mobile-toggle-btn {
+.tgf-mobile-toggle-btn {
   display: none;
   width: 44px;
   height: 44px;
   background: #f8fafc;
-  border: 1.5px solid var(--ngf-slate-200);
-  border-radius: var(--ngf-radius-md);
-  color: var(--ngf-ink-900);
+  border: 1.5px solid var(--tgf-slate-200);
+  border-radius: var(--tgf-radius-md);
+  color: var(--tgf-ink-900);
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.ngf-mobile-toggle-btn:hover {
-  background: var(--ngf-accent-50);
-  border-color: var(--ngf-accent-300);
-  color: var(--ngf-accent-500);
+.tgf-mobile-toggle-btn:hover {
+  background: var(--tgf-accent-50);
+  border-color: var(--tgf-accent-300);
+  color: var(--tgf-accent-500);
 }
 
-.ngf-mobile-toggle-btn.is-active {
-  background: var(--ngf-accent-50);
-  border-color: var(--ngf-accent-500);
-  color: var(--ngf-accent-500);
+.tgf-mobile-toggle-btn.is-active {
+  background: var(--tgf-accent-50);
+  border-color: var(--tgf-accent-500);
+  color: var(--tgf-accent-500);
 }
 
 /* ============================================================
    3. EXECUTIVE MOBILE SLIDE-IN DRAWER
    ============================================================ */
-.ngf-drawer-backdrop {
+.tgf-drawer-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(var(--ngf-ink-rgb), 0.65);
+  background: rgba(var(--tgf-ink-rgb), 0.65);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   z-index: 9999;
@@ -229,7 +229,7 @@
   animation: fadeIn 0.25s ease;
 }
 
-.ngf-mobile-drawer-sheet {
+.tgf-mobile-drawer-sheet {
   width: 88%;
   max-width: 380px;
   height: 100%;
@@ -266,7 +266,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 1.5rem;
-  border-bottom: 1.5px solid var(--ngf-slate-100);
+  border-bottom: 1.5px solid var(--tgf-slate-100);
   background: #ffffff;
   position: sticky;
   top: 0;
@@ -291,8 +291,8 @@
   height: 38px;
   border-radius: 50%;
   background: #f1f5f9;
-  border: 1px solid var(--ngf-slate-200);
-  color: var(--ngf-slate-600);
+  border: 1px solid var(--tgf-slate-200);
+  color: var(--tgf-slate-600);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -301,9 +301,9 @@
 }
 
 .drawer-close-btn:hover {
-  background: var(--ngf-accent-50);
-  color: var(--ngf-accent-500);
-  border-color: var(--ngf-accent-300);
+  background: var(--tgf-accent-50);
+  color: var(--tgf-accent-500);
+  border-color: var(--tgf-accent-300);
 }
 
 /* Drawer Quick Action Cards */
@@ -313,7 +313,7 @@
   gap: 0.625rem;
   padding: 1.25rem 1.5rem;
   background: #f8fafc;
-  border-bottom: 1px solid var(--ngf-slate-200);
+  border-bottom: 1px solid var(--tgf-slate-200);
 }
 
 .drawer-action-card {
@@ -321,8 +321,8 @@
   align-items: center;
   gap: 0.875rem;
   padding: 0.875rem 1rem;
-  border-radius: var(--ngf-radius-lg);
-  border: 1.5px solid var(--ngf-slate-200);
+  border-radius: var(--tgf-radius-lg);
+  border: 1.5px solid var(--tgf-slate-200);
   background: #ffffff;
   text-align: left;
   cursor: pointer;
@@ -338,7 +338,7 @@
 .action-icon-wrap {
   width: 40px;
   height: 40px;
-  border-radius: var(--ngf-radius-md);
+  border-radius: var(--tgf-radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -346,14 +346,14 @@
 }
 
 .action-icon-wrap.accent {
-  background: var(--ngf-accent-50);
-  color: var(--ngf-accent-500);
-  border: 1px solid var(--ngf-accent-200);
+  background: var(--tgf-accent-50);
+  color: var(--tgf-accent-500);
+  border: 1px solid var(--tgf-accent-200);
 }
 
 .action-icon-wrap.navy {
-  background: var(--ngf-ink-950);
-  color: var(--ngf-accent-400);
+  background: var(--tgf-ink-950);
+  color: var(--tgf-accent-400);
   border: 1px solid #1e293b;
 }
 
@@ -364,26 +364,26 @@
 .action-text strong {
   font-size: 0.9375rem;
   font-weight: 800;
-  color: var(--ngf-ink-900);
+  color: var(--tgf-ink-900);
   display: block;
   line-height: 1.25;
 }
 
 .action-text small {
   font-size: 0.75rem;
-  color: var(--ngf-slate-500);
+  color: var(--tgf-slate-500);
   display: block;
   margin-top: 0.125rem;
 }
 
 .action-arrow {
-  color: var(--ngf-slate-400);
+  color: var(--tgf-slate-400);
   transition: transform 0.2s ease;
 }
 
 .drawer-action-card:hover .action-arrow {
   transform: translateX(3px);
-  color: var(--ngf-accent-500);
+  color: var(--tgf-accent-500);
 }
 
 /* Navigation List Section */
@@ -395,7 +395,7 @@
 .drawer-section-label {
   font-size: 0.6875rem;
   font-weight: 800;
-  color: var(--ngf-slate-400);
+  color: var(--tgf-slate-400);
   letter-spacing: 0.08em;
   display: block;
   margin-bottom: 0.75rem;
@@ -412,10 +412,10 @@
   align-items: center;
   gap: 0.875rem;
   padding: 0.8125rem 1rem;
-  border-radius: var(--ngf-radius-md);
+  border-radius: var(--tgf-radius-md);
   font-size: 0.9375rem;
   font-weight: 700;
-  color: var(--ngf-slate-700);
+  color: var(--tgf-slate-700);
   background: transparent;
   border: none;
   text-align: left;
@@ -424,44 +424,44 @@
 }
 
 .drawer-link .link-icon {
-  color: var(--ngf-slate-400);
+  color: var(--tgf-slate-400);
   transition: color 0.15s ease;
 }
 
 .drawer-link .link-chevron {
   margin-left: auto;
-  color: var(--ngf-slate-300);
+  color: var(--tgf-slate-300);
 }
 
 .drawer-link:hover {
   background: #f1f5f9;
-  color: var(--ngf-ink-900);
+  color: var(--tgf-ink-900);
 }
 
 .drawer-link:hover .link-icon {
-  color: var(--ngf-accent-500);
+  color: var(--tgf-accent-500);
 }
 
 .drawer-link.active {
-  background: var(--ngf-accent-50);
-  color: var(--ngf-accent-500);
-  border-left: 3px solid var(--ngf-accent-500);
+  background: var(--tgf-accent-50);
+  color: var(--tgf-accent-500);
+  border-left: 3px solid var(--tgf-accent-500);
 }
 
 .drawer-link.active .link-icon {
-  color: var(--ngf-accent-500);
+  color: var(--tgf-accent-500);
 }
 
 .drawer-link.active .link-chevron {
-  color: var(--ngf-accent-500);
+  color: var(--tgf-accent-500);
 }
 
 /* Drawer Footer Hotline Box */
 .drawer-footer-hotline {
   margin: 1.25rem 1.5rem 1.75rem;
   padding: 1.25rem;
-  background: var(--ngf-ink-950);
-  border-radius: var(--ngf-radius-xl);
+  background: var(--tgf-ink-950);
+  border-radius: var(--tgf-radius-xl);
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
@@ -494,15 +494,15 @@
   justify-content: center;
   gap: 0.5rem;
   width: 100%;
-  background: linear-gradient(135deg, var(--ngf-accent-500) 0%, var(--ngf-accent-500) 100%);
+  background: linear-gradient(135deg, var(--tgf-accent-500) 0%, var(--tgf-accent-500) 100%);
   color: #ffffff;
   padding: 0.75rem;
-  border-radius: var(--ngf-radius-md);
+  border-radius: var(--tgf-radius-md);
   font-size: 0.875rem;
   font-weight: 700;
   text-decoration: none;
   margin-bottom: 0.75rem;
-  box-shadow: 0 4px 12px rgba(var(--ngf-accent-rgb), 0.25);
+  box-shadow: 0 4px 12px rgba(var(--tgf-accent-rgb), 0.25);
   transition: all 0.2s ease;
 }
 
@@ -523,37 +523,37 @@
    RESPONSIVE DESIGN BREAKPOINTS
    ============================================================ */
 @media (max-width: 1024px) {
-  .ngf-nav-links, .ngf-header-actions {
+  .tgf-nav-links, .tgf-header-actions {
     display: none;
   }
-  .ngf-mobile-toggle-btn {
+  .tgf-mobile-toggle-btn {
     display: flex;
   }
 }
 
 /* HIDE TOP UTILITY BAR COMPLETELY ON MOBILE & TABLET */
 @media (max-width: 900px) {
-  .ngf-topbar {
+  .tgf-topbar {
     display: none !important;
   }
-  .ngf-header-inner {
+  .tgf-header-inner {
     height: 74px;
   }
-  .ngf-brand-logo-img {
+  .tgf-brand-logo-img {
     height: 60px;
     max-width: 210px;
   }
 }
 
 @media (max-width: 480px) {
-  .ngf-header-inner {
+  .tgf-header-inner {
     height: 68px;
   }
-  .ngf-brand-logo-img {
+  .tgf-brand-logo-img {
     height: 54px;
     max-width: 180px;
   }
-  .ngf-mobile-drawer-sheet {
+  .tgf-mobile-drawer-sheet {
     width: 92%;
   }
 }

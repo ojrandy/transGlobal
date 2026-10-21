@@ -120,40 +120,40 @@ export const ShipmentPaymentPanel: React.FC<ShipmentPaymentPanelProps> = ({ trac
   };
 
   return (
-    <section className="ngf-spp" aria-labelledby={`ngf-spp-${trackingNumber}`}>
-      <div className="ngf-spp-head">
-        <h4 id={`ngf-spp-${trackingNumber}`}>Payment request</h4>
-        {payment && !draft && <span className={`ngf-spp-status s-${payment.status.toLowerCase()}`}>{STATUS_LABELS[payment.status]}</span>}
+    <section className="tgf-spp" aria-labelledby={`tgf-spp-${trackingNumber}`}>
+      <div className="tgf-spp-head">
+        <h4 id={`tgf-spp-${trackingNumber}`}>Payment request</h4>
+        {payment && !draft && <span className={`tgf-spp-status s-${payment.status.toLowerCase()}`}>{STATUS_LABELS[payment.status]}</span>}
       </div>
-      <p className="ngf-spp-hint">Shown to the customer on the track page. Saved on its own, separately from Save Changes.</p>
+      <p className="tgf-spp-hint">Shown to the customer on the track page. Saved on its own, separately from Save Changes.</p>
 
-      <p className={`ngf-spp-message${message?.error ? ' is-error' : ''}`} role="status" aria-live="polite">{message?.text}</p>
+      <p className={`tgf-spp-message${message?.error ? ' is-error' : ''}`} role="status" aria-live="polite">{message?.text}</p>
 
       {loading ? (
-        <p className="ngf-spp-empty">Loading…</p>
+        <p className="tgf-spp-empty">Loading…</p>
       ) : loadError ? (
-        <div className="ngf-load-error" role="alert">
-          <p className="ngf-spp-error">{loadError}</p>
-          <button type="button" className="ngf-load-retry" onClick={() => setReloadKey((k) => k + 1)}>Try again</button>
+        <div className="tgf-load-error" role="alert">
+          <p className="tgf-spp-error">{loadError}</p>
+          <button type="button" className="tgf-load-retry" onClick={() => setReloadKey((k) => k + 1)}>Try again</button>
         </div>
       ) : draft ? (
         <>
           <PaymentRequestEditor value={draft} onChange={setDraft} errors={errors} invoices={invoices} idPrefix={`edit-${trackingNumber}`} compact />
-          <div className="ngf-spp-actions">
-            <button type="button" className="ngf-spp-btn" onClick={() => { setDraft(null); setErrors({}); setMessage(null); }} disabled={busy}>Cancel</button>
-            <button type="button" className="ngf-spp-btn primary" onClick={save} disabled={busy}>
-              {busy && <Loader2 size={14} className="ngf-spp-spin" aria-hidden="true" />}
+          <div className="tgf-spp-actions">
+            <button type="button" className="tgf-spp-btn" onClick={() => { setDraft(null); setErrors({}); setMessage(null); }} disabled={busy}>Cancel</button>
+            <button type="button" className="tgf-spp-btn primary" onClick={save} disabled={busy}>
+              {busy && <Loader2 size={14} className="tgf-spp-spin" aria-hidden="true" />}
               <span>{payment ? 'Save payment request' : 'Add payment request'}</span>
             </button>
           </div>
         </>
       ) : payment ? (
-        <div className="ngf-spp-summary">
-          <div className="ngf-spp-amount">{formatPaymentAmount(payment.amount, payment.currency)}</div>
-          <p className="ngf-spp-reason">{payment.chargeReason}</p>
-          {payment.dueDate && <p className="ngf-spp-meta">Due {payment.dueDate}</p>}
-          {payment.paidAt && <p className="ngf-spp-meta">Paid {new Date(payment.paidAt).toLocaleString()}</p>}
-          <ul className="ngf-spp-accounts">
+        <div className="tgf-spp-summary">
+          <div className="tgf-spp-amount">{formatPaymentAmount(payment.amount, payment.currency)}</div>
+          <p className="tgf-spp-reason">{payment.chargeReason}</p>
+          {payment.dueDate && <p className="tgf-spp-meta">Due {payment.dueDate}</p>}
+          {payment.paidAt && <p className="tgf-spp-meta">Paid {new Date(payment.paidAt).toLocaleString()}</p>}
+          <ul className="tgf-spp-accounts">
             {payment.methods.map((m) => (
               <li key={m.id}>
                 <PaymentIcon type={m.type} size={16} />
@@ -161,39 +161,39 @@ export const ShipmentPaymentPanel: React.FC<ShipmentPaymentPanelProps> = ({ trac
               </li>
             ))}
           </ul>
-          <div className="ngf-spp-actions">
+          <div className="tgf-spp-actions">
             {(payment.status === 'AWAITING_PAYMENT' || payment.status === 'UNDER_REVIEW') && (
               <>
-                <button type="button" className="ngf-spp-btn" onClick={() => changeStatus('cancel')} disabled={busy}>
+                <button type="button" className="tgf-spp-btn" onClick={() => changeStatus('cancel')} disabled={busy}>
                   <Ban size={14} aria-hidden="true" />
                   <span>Cancel request</span>
                 </button>
-                <button type="button" className="ngf-spp-btn" onClick={() => changeStatus('mark_paid')} disabled={busy}>
+                <button type="button" className="tgf-spp-btn" onClick={() => changeStatus('mark_paid')} disabled={busy}>
                   <CheckCircle2 size={14} aria-hidden="true" />
                   <span>Mark paid</span>
                 </button>
               </>
             )}
             {(payment.status === 'PAID' || payment.status === 'CANCELLED') && (
-              <button type="button" className="ngf-spp-btn" onClick={() => changeStatus('reopen')} disabled={busy}>
+              <button type="button" className="tgf-spp-btn" onClick={() => changeStatus('reopen')} disabled={busy}>
                 <RotateCcw size={14} aria-hidden="true" />
                 <span>Reopen</span>
               </button>
             )}
-            <button type="button" className="ngf-spp-btn danger" onClick={remove} disabled={busy}>
+            <button type="button" className="tgf-spp-btn danger" onClick={remove} disabled={busy}>
               <Trash2 size={14} aria-hidden="true" />
               <span>Delete</span>
             </button>
-            <button type="button" className="ngf-spp-btn" onClick={startEditing} disabled={busy}>
+            <button type="button" className="tgf-spp-btn" onClick={startEditing} disabled={busy}>
               <Pencil size={14} aria-hidden="true" />
               <span>Edit</span>
             </button>
           </div>
         </div>
       ) : (
-        <div className="ngf-spp-none">
-          <p className="ngf-spp-empty">No payment request for this shipment.</p>
-          <button type="button" className="ngf-spp-btn primary" onClick={startEditing}>
+        <div className="tgf-spp-none">
+          <p className="tgf-spp-empty">No payment request for this shipment.</p>
+          <button type="button" className="tgf-spp-btn primary" onClick={startEditing}>
             <Plus size={14} aria-hidden="true" />
             <span>Add payment request</span>
           </button>

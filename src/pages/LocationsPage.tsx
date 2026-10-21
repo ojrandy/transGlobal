@@ -22,11 +22,11 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({ onNavigate }) => {
     .filter((group) => group.gateways.length > 0);
 
   return (
-    <div className="ngf-page-locations">
+    <div className="tgf-page-locations">
       {/* =========================================================================
           1. CINEMATIC HERO SECTION
           ========================================================================= */}
-      <section className="ngf-locations-hero">
+      <section className="tgf-locations-hero">
         <ResponsiveImage
           name="locations-hero"
           alt="Aerial view of a container ship berthed at a lit port terminal at night"
@@ -36,7 +36,7 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({ onNavigate }) => {
           imgClassName="locations-hero-img"
         />
         <div className="locations-hero-bg-overlay" />
-        <div className="ngf-container-wide locations-hero-inner">
+        <div className="tgf-container-wide locations-hero-inner">
           <div className="locations-hero-pill animate-fade-in">
             <span className="locations-pulse-dot" />
             <span>GLOBAL NETWORK</span>
@@ -55,7 +55,7 @@ export const LocationsPage: React.FC<LocationsPageProps> = ({ onNavigate }) => {
       {/* =========================================================================
           2. MAIN BODY: MAP & GATEWAY CARDS
           ========================================================================= */}
-      <div className="ngf-container-wide ngf-locations-content">
+      <div className="tgf-container-wide tgf-locations-content">
         <div className="locations-map-feature animate-fade-in">
           <div className="map-card-header">
             <div className="map-badge-pill font-mono">GLOBAL NETWORK</div>

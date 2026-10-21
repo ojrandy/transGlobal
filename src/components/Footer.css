@@ -3,7 +3,7 @@
    Ink surface · Accent swoosh · White logo · 5-col
    ============================================================ */
 
-.ngf-pro-footer-wrapper {
+.tgf-pro-footer-wrapper {
   margin-top: auto;
   width: 100%;
 }
@@ -11,48 +11,48 @@
 /* ============================================================
    1. TRUST FEATURE STRIP
    ============================================================ */
-.ngf-footer-trust-strip {
-  background-color: var(--ngf-white);
-  border-top: 1.5px solid var(--ngf-slate-200);
-  border-bottom: 1.5px solid var(--ngf-slate-200);
+.tgf-footer-trust-strip {
+  background-color: var(--tgf-white);
+  border-top: 1.5px solid var(--tgf-slate-200);
+  border-bottom: 1.5px solid var(--tgf-slate-200);
   padding: 2.25rem 0;
 }
 
-.ngf-trust-grid {
+.tgf-trust-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 
-.ngf-trust-card {
+.tgf-trust-card {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
 }
 
-.ngf-trust-icon {
+.tgf-trust-icon {
   width: 46px;
   height: 46px;
-  border-radius: var(--ngf-radius-lg);
-  background-color: var(--ngf-accent-50);
-  color: var(--ngf-accent-500);
-  border: 1px solid var(--ngf-accent-200);
+  border-radius: var(--tgf-radius-lg);
+  background-color: var(--tgf-accent-50);
+  color: var(--tgf-accent-500);
+  border: 1px solid var(--tgf-accent-200);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.ngf-trust-info h3 {
+.tgf-trust-info h3 {
   font-size: 0.9375rem;
   font-weight: 800;
-  color: var(--ngf-ink-900);
+  color: var(--tgf-ink-900);
   margin-bottom: 0.25rem;
 }
 
-.ngf-trust-info p {
+.tgf-trust-info p {
   font-size: 0.8125rem;
-  color: var(--ngf-slate-600);
+  color: var(--tgf-slate-600);
   line-height: 1.45;
   margin: 0;
 }
@@ -60,9 +60,9 @@
 /* ============================================================
    2. MAIN EXECUTIVE FOOTER
    ============================================================ */
-.ngf-pro-footer-main {
+.tgf-pro-footer-main {
   position: relative;
-  background: var(--ngf-ink-950);
+  background: var(--tgf-ink-950);
   color: #94a3b8;
   padding: 5rem 0 2.25rem;
   overflow: hidden;
@@ -90,10 +90,10 @@
   bottom: -40px;
   width: 320px;
   height: 140px;
-  background: radial-gradient(ellipse at center, rgba(var(--ngf-accent-rgb), 0.45) 0%, rgba(var(--ngf-accent-rgb), 0.2) 45%, transparent 75%);
+  background: radial-gradient(ellipse at center, rgba(var(--tgf-accent-rgb), 0.45) 0%, rgba(var(--tgf-accent-rgb), 0.2) 45%, transparent 75%);
   border-top-left-radius: 200px 100px;
-  border-top: 3px solid rgba(var(--ngf-accent-rgb), 0.85);
-  box-shadow: 0 -10px 40px rgba(var(--ngf-accent-rgb), 0.25);
+  border-top: 3px solid rgba(var(--tgf-accent-rgb), 0.85);
+  box-shadow: 0 -10px 40px rgba(var(--tgf-accent-rgb), 0.25);
   pointer-events: none;
   z-index: 1;
   transform: rotate(-4deg);
@@ -106,7 +106,7 @@
 
 /* 5-Column Grid: brand column + four equal link columns, so every column
    starts on an even rhythm and all headings share one top line. */
-.ngf-pro-footer-grid {
+.tgf-pro-footer-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.75fr) repeat(4, minmax(0, 1fr));
   column-gap: 3rem;
@@ -116,12 +116,12 @@
 }
 
 /* Column 1: Brand */
-.ngf-pro-brand-col {
+.tgf-pro-brand-col {
   display: flex;
   flex-direction: column;
 }
 
-.ngf-pro-footer-logo {
+.tgf-pro-footer-logo {
   display: block;
   cursor: pointer;
   margin-bottom: 1.5rem;
@@ -129,14 +129,14 @@
   width: fit-content;
 }
 
-.ngf-pro-footer-logo:focus-visible,
-.ngf-pro-links-list a:focus-visible {
-  outline: 2px solid var(--ngf-accent-500);
+.tgf-pro-footer-logo:focus-visible,
+.tgf-pro-links-list a:focus-visible {
+  outline: 2px solid var(--tgf-accent-500);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-.ngf-pro-footer-logo-img {
+.tgf-pro-footer-logo-img {
   height: 80px;
   width: auto;
   max-width: 270px;
@@ -144,7 +144,7 @@
   display: block;
 }
 
-.ngf-pro-brand-desc {
+.tgf-pro-brand-desc {
   font-size: 0.875rem;
   color: #94a3b8;
   line-height: 1.65;
@@ -152,7 +152,7 @@
   max-width: 340px;
 }
 
-.ngf-pro-socials {
+.tgf-pro-socials {
   display: flex;
   align-items: center;
   gap: 0.625rem;
@@ -168,19 +168,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ngf-accent-500);
+  color: var(--tgf-accent-500);
   transition: all 0.2s ease;
 }
 
 .pro-social-btn:hover {
-  background: var(--ngf-accent-500);
+  background: var(--tgf-accent-500);
   color: #ffffff;
-  border-color: var(--ngf-accent-500);
+  border-color: var(--tgf-accent-500);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(var(--ngf-accent-rgb), 0.3);
+  box-shadow: 0 4px 12px rgba(var(--tgf-accent-rgb), 0.3);
 }
 
-.ngf-pro-faster-tagline {
+.tgf-pro-faster-tagline {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -193,17 +193,17 @@
 .tagline-bar {
   width: 32px;
   height: 3px;
-  background: var(--ngf-accent-500);
+  background: var(--tgf-accent-500);
   border-radius: 2px;
 }
 
 /* Link Columns (Quick Links, Our Services, Support) */
-.ngf-pro-links-col {
+.tgf-pro-links-col {
   display: flex;
   flex-direction: column;
 }
 
-.ngf-pro-col-title {
+.tgf-pro-col-title {
   font-size: 0.9375rem;
   font-weight: 800;
   line-height: 1.2;
@@ -221,11 +221,11 @@
   display: block;
   width: 24px;
   height: 2.5px;
-  background: var(--ngf-accent-500);
+  background: var(--tgf-accent-500);
   border-radius: 2px;
 }
 
-.ngf-pro-links-list {
+.tgf-pro-links-list {
   display: flex;
   flex-direction: column;
   gap: 0.875rem;
@@ -234,13 +234,13 @@
   margin: 0;
 }
 
-.ngf-pro-links-list li {
+.tgf-pro-links-list li {
   margin: 0;
   padding: 0;
   line-height: 1.4;
 }
 
-.ngf-pro-links-list a {
+.tgf-pro-links-list a {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
@@ -255,18 +255,18 @@
 /* The chevron glyph sits ~5px inside its 14px box; pull it back so its visible
    edge lines up with the column title and accent dash above. */
 .link-chevron {
-  color: var(--ngf-accent-500);
+  color: var(--tgf-accent-500);
   flex-shrink: 0;
   margin-left: -5px;
   transition: transform 0.2s ease;
 }
 
-.ngf-pro-links-list a:hover {
+.tgf-pro-links-list a:hover {
   color: #ffffff;
   transform: translateX(4px);
 }
 
-.ngf-pro-links-list a:hover .link-chevron {
+.tgf-pro-links-list a:hover .link-chevron {
   transform: translateX(2px);
 }
 
@@ -291,15 +291,15 @@
 }
 
 .pro-admin-link:hover {
-  color: var(--ngf-accent-400);
-  border-color: var(--ngf-accent-500);
-  background: rgba(var(--ngf-accent-rgb), 0.08);
+  color: var(--tgf-accent-400);
+  border-color: var(--tgf-accent-500);
+  background: rgba(var(--tgf-accent-rgb), 0.08);
 }
 
 /* ============================================================
    3. BOTTOM BAR
    ============================================================ */
-.ngf-pro-footer-bottom {
+.tgf-pro-footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 1.75rem;
   display: flex;
@@ -326,7 +326,7 @@
 }
 
 .pro-bottom-link:focus-visible {
-  outline: 2px solid var(--ngf-accent-500);
+  outline: 2px solid var(--tgf-accent-500);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -340,7 +340,7 @@
    RESPONSIVE DESIGN & MOBILE BREAKPOINTS
    ============================================================ */
 @media (max-width: 1200px) {
-  .ngf-pro-footer-grid {
+  .tgf-pro-footer-grid {
     grid-template-columns: minmax(0, 1.5fr) repeat(4, minmax(0, 1fr));
     column-gap: 2rem;
   }
@@ -348,40 +348,40 @@
 
 /* Tablet: brand on its own row, the four link columns in one even row below. */
 @media (max-width: 1024px) {
-  .ngf-trust-grid {
+  .tgf-trust-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .ngf-pro-footer-grid {
+  .tgf-pro-footer-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 2rem;
     row-gap: 2.75rem;
   }
-  .ngf-pro-brand-col {
+  .tgf-pro-brand-col {
     grid-column: 1 / -1;
   }
-  .ngf-pro-brand-desc {
+  .tgf-pro-brand-desc {
     max-width: 520px;
   }
 }
 
 @media (max-width: 640px) {
-  .ngf-trust-grid {
+  .tgf-trust-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
-  .ngf-pro-footer-main {
+  .tgf-pro-footer-main {
     padding: 3.5rem 0 2rem;
   }
-  .ngf-pro-footer-grid {
+  .tgf-pro-footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 1.5rem;
     row-gap: 2.25rem;
     margin-bottom: 2.75rem;
   }
-  .ngf-pro-brand-col {
+  .tgf-pro-brand-col {
     grid-column: 1 / -1;
   }
-  .ngf-pro-footer-bottom {
+  .tgf-pro-footer-bottom {
     flex-direction: column;
     align-items: center;
     text-align: center;

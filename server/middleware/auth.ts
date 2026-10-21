@@ -24,7 +24,7 @@ declare module 'express-session' {
 // this middleware with a valid session in the first place. Removed rather than attempting a
 // third derivation; the session check below remains the real gate.
 // Admin session cookie name.
-export const SESSION_COOKIE = 'ngf.sid';
+export const SESSION_COOKIE = 'tgf.sid';
 
 export function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
   if (!req.session?.isAdmin) {

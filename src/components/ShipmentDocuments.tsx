@@ -28,19 +28,19 @@ export const ShipmentDocuments: React.FC<ShipmentDocumentsProps> = ({
   };
 
   return (
-    <div className={`ngf-docs-section ${className}`}>
-      <div className="ngf-docs-header">
-        <h3 className="ngf-docs-title">Shipment Documents</h3>
+    <div className={`tgf-docs-section ${className}`}>
+      <div className="tgf-docs-header">
+        <h3 className="tgf-docs-title">Shipment Documents</h3>
       </div>
 
-      <div className="ngf-docs-grid">
+      <div className="tgf-docs-grid">
         {documents.map((doc) => {
           const isAvailable = doc.status === 'AVAILABLE';
 
           return (
             <div
               key={doc.id}
-              className={`ngf-doc-card ${isAvailable ? 'available' : 'restricted'}`}
+              className={`tgf-doc-card ${isAvailable ? 'available' : 'restricted'}`}
             >
               <div className="doc-card-top">
                 <div className="doc-icon-wrap">
@@ -81,15 +81,15 @@ export const ShipmentDocuments: React.FC<ShipmentDocumentsProps> = ({
 
       {/* Document Preview Modal */}
       {selectedDoc && (
-        <div className="ngf-modal-overlay" onClick={() => setSelectedDoc(null)}>
+        <div className="tgf-modal-overlay" onClick={() => setSelectedDoc(null)}>
           <div
-            className="ngf-modal-paper"
+            className="tgf-modal-paper"
             role="dialog"
             aria-modal="true"
             aria-label={selectedDoc.title}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="ngf-modal-header">
+            <div className="tgf-modal-header">
               <div className="modal-title-wrap">
                 <FileText size={20} className="text-blue" />
                 <h3>{selectedDoc.title}</h3>
@@ -101,7 +101,7 @@ export const ShipmentDocuments: React.FC<ShipmentDocumentsProps> = ({
             </div>
 
             {/* Document Content Simulation */}
-            <div className="ngf-modal-body">
+            <div className="tgf-modal-body">
               <div className="doc-official-header">
                 <DocumentHeaderBrand className="doc-brand" />
                 <div className="doc-barcode-box">
@@ -140,11 +140,11 @@ export const ShipmentDocuments: React.FC<ShipmentDocumentsProps> = ({
               <DocumentLegalFooter />
             </div>
 
-            <div className="ngf-modal-footer">
-              <button className="ngf-btn-secondary" onClick={() => setSelectedDoc(null)}>
+            <div className="tgf-modal-footer">
+              <button className="tgf-btn-secondary" onClick={() => setSelectedDoc(null)}>
                 Close
               </button>
-              <button className="ngf-btn-primary" onClick={() => window.print()}>
+              <button className="tgf-btn-primary" onClick={() => window.print()}>
                 <Printer size={16} /> Print
               </button>
             </div>
