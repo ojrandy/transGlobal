@@ -13,7 +13,6 @@ import { Shipment } from './types/shipment';
 import { QuoteRequest } from './types/admin';
 import { api } from './services/api';
 import { simulationEngine } from './services/simulationEngine';
-import { setLiveChatVisible } from './services/liveChat';
 import { ADMIN_CONSOLE_NAME, COMPANY, COMPANY_SHORT, isAdminPath } from './config/brand';
 import './styles/fonts.css';
 import './styles/global.css';
@@ -215,10 +214,6 @@ function MainAppContent() {
     setPageMeta(meta[currentPage] || PAGE_META.home);
     setRobotsNoIndex(currentPage === 'admin' || onAdminPath());
   }, [currentPage, liveShipment, currentQuote]);
-
-  useEffect(() => {
-    setLiveChatVisible(currentPage !== 'admin' && !onAdminPath());
-  }, [currentPage]);
 
   // Warm the other public pages after the first one has fully loaded (never on the admin path).
   useEffect(() => {

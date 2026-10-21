@@ -88,5 +88,20 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <noscript>Powered by <a href="https://coretexcoregroup.com" target="_blank" rel="noopener">Coretex Core Group</a></noscript>
+
+    <!-- Smartsupp Live Chat script (skipped on the admin console path) -->
+    <script type="text/javascript">
+    if (location.pathname !== '/private-site' && location.pathname !== '/private-site/') {
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '96f74d2c2c9a5ab3a1dca7292ffa38f8ae77ba76';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    }
+    </script>
+    <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
   </body>
 </html>
