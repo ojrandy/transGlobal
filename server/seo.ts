@@ -1,13 +1,13 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { ADMIN_HOST, SITE_URL } from '../src/config/brand.js';
+import { ADMIN_PATH, isAdminPath, SITE_URL } from '../src/config/brand.js';
 
 // robots.txt, sitemap.xml and crawler headers (tracker 6.4). The public site and the admin
-// console are the same Node app on two hostnames (DEPLOYMENT §5), so every answer here depends
-// on which host asked. The admin host is never listed anywhere a crawler can read it.
+// console are the same Node app on one domain; the console lives at ADMIN_PATH (DEPLOYMENT §5).
+// The admin path is never listed anywhere a crawler can read it (not in robots.txt either).
 
-// ADMIN_PROXY_TARGET marks a deployment that serves only the admin host (see index.ts).
+// ADMIN_PROXY_TARGET marks a deployment that serves only the admin (see index.ts).
 function isAdminRequest(req: Request): boolean {
-  return Boolean(process.env.ADMIN_PROXY_TARGET) || req.hostname.toLowerCase() === ADMIN_HOST;
+  return Boolean(process.env.ADMIN_PROXY_TARGET) || isAdminPath(req.path) || req.path.startsWith(ADMIN_PATH);
 }
 
 // The site uses hash routing (#/services, #/track/…). Search engines drop everything after "#",
@@ -16,7 +16,7 @@ const SITEMAP_PATHS = ['/'];
 
 export const seoRouter = Router();
 
-// Belt and braces for the admin host: a header works before any HTML or JS runs, and also covers
+// Belt and braces for the admin path: a header works before any HTML or JS runs, and also covers
 // API responses and static files (App.tsx adds the matching robots meta tag at runtime).
 seoRouter.use((req: Request, res: Response, next: NextFunction) => {
   if (isAdminRequest(req)) res.setHeader('X-Robots-Tag', 'noindex, nofollow');

@@ -23,7 +23,7 @@ import { authRouter } from './routes/auth.js';
 import { messagesRouter } from './routes/messages.js';
 import { mediaRouter } from './routes/media.js';
 import { seoRouter } from './seo.js';
-import { COMPANY } from '../src/config/brand.js';
+import { ADMIN_PATH, COMPANY, isAdminPath } from '../src/config/brand.js';
 import { requireAdminAuth, SESSION_COOKIE } from './middleware/auth.js';
 
 dotenv.config(); // reload trigger for tsx watch after .env changes
@@ -225,7 +225,8 @@ if (ADMIN_PROXY_TARGET) {
 // the whole deployed app — API above, static site here. The app uses HashRouter (#/admin,
 // #/track/...), so the browser only ever requests the bare "/" from the server no matter which
 // in-app page is open (everything after "#" stays client-side) — express.static's default
-// index.html-for-"/" behavior is enough, no separate SPA catch-all route is needed.
+// index.html-for-"/" behavior is enough, no separate SPA catch-all route is needed. The one
+// exception is the admin console at ADMIN_PATH, which has its own route below.
 //
 // Cache rules, so Hostinger's CDN and browsers can keep the files (with Express's default
 // max-age=0 every visitor pulled the full bundle from this process): Vite's /assets/ files have
@@ -234,6 +235,24 @@ if (ADMIN_PROXY_TARGET) {
 // names, re-encoded in place by scripts/optimize-images.mjs) for a week, refreshed in the
 // background after that; anything else for an hour.
 const distDir = path.join(process.cwd(), 'dist');
+
+// Admin console (DEPLOYMENT §5): the same index.html as "/", served at ADMIN_PATH; App.tsx decides
+// from the path that only the admin is shown. Express matches routes case-insensitively and
+// ignores a trailing slash, so the exact path is checked here and anything else falls through.
+app.get(ADMIN_PATH.slice(0, -1), (req: Request, res: Response, next: NextFunction) => {
+  if (!isAdminPath(req.path)) return next();
+  if (req.path !== ADMIN_PATH) {
+    const q = req.originalUrl.indexOf('?');
+    res.redirect(301, ADMIN_PATH + (q >= 0 ? req.originalUrl.slice(q) : ''));
+    return;
+  }
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+  res.sendFile(path.join(distDir, 'index.html'), { cacheControl: false }, (err) => {
+    if (err) next(err);
+  });
+});
+
 app.use(express.static(distDir, {
   setHeaders: (res, filePath) => {
     const rel = path.relative(distDir, filePath).split(path.sep).join('/');

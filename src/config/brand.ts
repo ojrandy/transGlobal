@@ -23,9 +23,12 @@ export const LOGO_WEB = '/brand/logo-web.webp';
 export const LOGO_WHITE_WEB = '/brand/logo-white-web.webp';
 export const LOGO_WEB_SIZE = { width: 323, height: 160 };
 
-// The admin console only opens on <ADMIN_SUBDOMAIN>.<DOMAIN> (plus localhost for development).
-export const ADMIN_SUBDOMAIN = 'private';
-export const ADMIN_HOST = `${ADMIN_SUBDOMAIN}.${DOMAIN}`;
+// The admin console only opens at <DOMAIN><ADMIN_PATH> (plus #/admin on localhost for development).
+export const ADMIN_PATH = '/private-site/';
+// Exact, case-sensitive match on "/private-site" or "/private-site/"; nothing else is the admin.
+export function isAdminPath(pathname: string): boolean {
+  return pathname === ADMIN_PATH || pathname === ADMIN_PATH.slice(0, -1);
+}
 export const ADMIN_CONSOLE_NAME = `${COMPANY_SHORT} Operations Console`;
 
 // Role label shown in the admin UI (CONTENT §10), also written as the operator on new records.

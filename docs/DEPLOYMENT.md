@@ -70,7 +70,7 @@ path in use. When unset it defaults to an `uploads` folder next to the database 
 `DB_PATH`, it **must** point outside the app/deploy directory on Hostinger, or every redeploy deletes the files.
 
 **Check persistence before launch:** the server has a temporary endpoint, `GET /api/diag/storage`. It is admin-only,
-so log in to the admin console first, then open `https://private.navoraglobalfreight.com/api/diag/storage` in the same
+so log in to the admin console first, then open `https://transglobalfreightlogistics.ltd/api/diag/storage` in the same
 browser. Redeploy and open it again. If `markerFirstSeen` stays the same, storage persists. **After confirming, remove
 this endpoint.**
 
@@ -78,17 +78,24 @@ this endpoint.**
 
 | Host | Points to | Purpose |
 |---|---|---|
-| `navoraglobalfreight.com` | Node app | Public site |
-| `www.navoraglobalfreight.com` | Redirect → apex (or the reverse; pick one) | |
-| `private.navoraglobalfreight.com` | **Same** Node app (add as an alias/additional domain) | Admin console |
+| `transglobalfreightlogistics.ltd` | Node app | Public site + admin at `/private-site/` |
+| `www.transglobalfreightlogistics.ltd` | **Redirect → bare domain** (required, see below) | |
 
-- **Admin console: `https://private.navoraglobalfreight.com`.** `isAdminHost()` in `src/App.tsx` compares the hostname
-  with `ADMIN_HOST` (`ADMIN_SUBDOMAIN = 'private'` + `DOMAIN`) from `src/config/brand.ts`.
-- In hPanel, add `private.navoraglobalfreight.com` as an additional domain/alias of the **same** Node app, not a
-  separate app, so both hostnames share one API, one session store and one database.
-- On the public domain, `#/admin` must fall back to Home. The admin host serves
-  `<meta name="robots" content="noindex, nofollow">`. Don't list the subdomain in `robots.txt` or `sitemap.xml`.
-- Turn on SSL for all three hostnames, and force HTTPS.
+- **Admin console: `https://transglobalfreightlogistics.ltd/private-site/`**, a path on the same Node app, domain
+  and API as the public site (no subdomain or DNS record). `isAdminPath()` in `src/config/brand.ts` (`ADMIN_PATH`)
+  matches `/private-site` and `/private-site/` exactly and case-sensitively; `src/App.tsx` checks it against
+  `location.pathname`, and on that path the app shows only the admin login or console.
+- The server (`server/index.ts`) redirects `GET /private-site` 301 → `/private-site/` and serves `dist/index.html`
+  there with `Cache-Control: no-cache` and `X-Robots-Tag: noindex, nofollow`; the page also adds
+  `<meta name="robots" content="noindex, nofollow">`. Don't list `/private-site` in `robots.txt` or `sitemap.xml`
+  (that would advertise it).
+- Anywhere else, `#/admin` falls back to Home (it opens the admin on localhost only, for development).
+- The session cookie is host-only (no `Domain`), so `www` **must** redirect to the bare domain; otherwise a login on
+  one host is not seen on the other.
+- Logging out returns to the login at `/private-site/`. Leaving a signed-in console for the public site ends the
+  session first.
+- If the old `private.` subdomain alias still exists in hPanel, remove it or redirect it to `/private-site/`.
+- Turn on SSL for both hostnames, and force HTTPS.
 
 ## 6. Email (info@navoraglobalfreight.com)
 
@@ -104,7 +111,8 @@ this endpoint.**
   the live site must say "not found".
 - [ ] Home loads over HTTPS, and the globe loads (or falls back) with no console errors.
 - [ ] `/api/health` returns `ok` with the Navora service name.
-- [ ] Admin subdomain → login works with the new password; `#/admin` on the public domain does **not** open admin.
+- [ ] `/private-site` and `/private-site/` → login works with the new password; refresh keeps the session; logout
+  returns to the login. `/` and `/#/admin` do **not** open admin. `curl -I .../private-site/` shows `X-Robots-Tag: noindex, nofollow`.
 - [ ] Create a shipment in admin → it gets an `NGF` + 5-character ID → the public Track page finds it.
 - [ ] Download the waybill / POD PDFs; both show Navora branding only.
 - [ ] Quote request → appears in admin → quote link opens publicly.
